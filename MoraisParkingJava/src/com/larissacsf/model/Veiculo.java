@@ -1,7 +1,7 @@
 package com.larissacsf.model;
 
 public class Veiculo {
-  //Attributes
+  
   private String proprietario;
   private int matricula;
   private String curso;
