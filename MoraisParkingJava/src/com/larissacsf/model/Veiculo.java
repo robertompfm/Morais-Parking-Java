@@ -33,7 +33,7 @@ public class Veiculo {
   public String getCurso() {
       return curso;
   }
-  public void setModelo(String curso) {
+  public void setCurso(String curso) {
       this.curso = curso;
   }
   public String getPlaca() {
@@ -43,7 +43,7 @@ public class Veiculo {
       this.placa = placa;
   }
   public String getModelo() {
-      return Modelo;
+      return modelo;
   }
   public void setModelo(String modelo) {
       this.modelo = modelo;
