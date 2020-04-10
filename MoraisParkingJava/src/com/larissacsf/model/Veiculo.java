@@ -3,13 +3,16 @@ package com.larissacsf.model;
 public class Veiculo {
   
   private String proprietario;
-  private int matricula;
+  private long matricula;
   private String curso;
   private String placa;
   private String modelo;
 
+  public Veiculo(String placa, String modelo) {
+      this("Desconhecido", 0L, "Desconhecido", placa, modelo);
+  }
 
-  public Veiculo(String proprietario, int matricula, String curso, String placa, String modelo) {
+  public Veiculo(String proprietario, long matricula, String curso, String placa, String modelo) {
       this.proprietario = proprietario;
       this.matricula = matricula;
       this.curso = curso;
@@ -24,10 +27,10 @@ public class Veiculo {
   public void setProprietario(String proprietario) {
       this.proprietario = proprietario;
   }
-  public int getMatricula() {
+  public long getMatricula() {
       return matricula;
   }
-  public void setMatricula(int matricula) {
+  public void setMatricula(long matricula) {
       this.matricula = matricula;
   }
   public String getCurso() {
