@@ -6,18 +6,18 @@ public class Veiculo {
   private long matricula;
   private String curso;
   private String placa;
-  private String modelo;
+  private Area area;
 
-  public Veiculo(String placa, String modelo) {
-      this("Desconhecido", 0L, "Desconhecido", placa, modelo);
+  public Veiculo(String placa, Area area) {
+      this("Desconhecido", 0L, "Desconhecido", placa, area);
   }
 
-  public Veiculo(String proprietario, long matricula, String curso, String placa, String modelo) {
+  public Veiculo(String proprietario, long matricula, String curso, String placa, Area area) {
       this.proprietario = proprietario;
       this.matricula = matricula;
       this.curso = curso;
       this.placa = placa;
-      this.modelo = modelo;
+      this.area = area;
 }
 
 
@@ -45,18 +45,18 @@ public class Veiculo {
   public void setPlaca(String placa) {
       this.placa = placa;
   }
-  public String getModelo() {
-      return modelo;
+  public Area getArea() {
+      return area;
   }
-  public void setModelo(String modelo) {
-      this.modelo = modelo;
+  public void setArea(Area area) {
+      this.area = area;
   }
 
 
 
   public String toString() {
       return  "Proprietario: " + this.proprietario + "\nMatrícula: " + this.matricula + "\nCurso: " + this.curso + "\nPlaca: " + this.placa
-              + "\nModelo: " + this.modelo;
+              + "\nArea: " + this.area.getNome();
   }
 
 }
