@@ -4,6 +4,7 @@ package com.larissacsf.model;
 public class Veiculo {
 
 	// ATTRIBUTES
+	private int id;
 	private String placa;
 	private Proprietario proprietario;
 	private String modelo;
@@ -13,11 +14,15 @@ public class Veiculo {
 	
 	// CONSTRUCTORS
 	public Veiculo(String placa, String modelo, String cor) {
-		this(placa, new Proprietario("Desconhecido", 0l, "N/A"), modelo, cor, "Comum");
+		this(-1, placa, new Proprietario("Desconhecido", 0l, "N/A"), modelo, cor, "Comum");
 	}
-	
 
 	public Veiculo(String placa, Proprietario proprietario, String modelo, String cor, String area) {
+		this(-1, placa, proprietario, modelo, cor, area);
+	}
+
+	public Veiculo(int id, String placa, Proprietario proprietario, String modelo, String cor, String area) {
+		this.id = id;
 		this.placa = placa;
 		this.proprietario = proprietario;
 		this.modelo = modelo;

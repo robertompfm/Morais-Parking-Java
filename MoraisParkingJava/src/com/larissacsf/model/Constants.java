@@ -27,16 +27,22 @@ public final class Constants {
             AREAS_TABLE +
             " (_id INTEGER PRIMARY KEY, nome TEXT NOT NULL UNIQUE, capacidade INTEGER NOT NULL)";
 
-    public static final String QUERY_PROPRIETARIO = "SELECT * FROM " + PROPRIETARIOS_TABLE +
+    public static final String QUERY_PROPRIETARIO_BY_NAME = "SELECT * FROM " + PROPRIETARIOS_TABLE +
             " WHERE nome = ?";
+    public static final String QUERY_PROPRIETARIO_BY_ID = "SELECT * FROM " + PROPRIETARIOS_TABLE +
+            " WHERE _id = ?";
     public static final String INSERT_PROPRIETARIO = "INSERT INTO " + PROPRIETARIOS_TABLE +
             " (nome, matricula, curso) VALUES (?, ?, ?)";
-    public static final String QUERY_VEICULO = "SELECT * FROM " + VEICULOS_TABLE +
+    public static final String QUERY_VEICULO_BY_PLACA = "SELECT * FROM " + VEICULOS_TABLE +
             " WHERE placa = ?";
+    public static final String QUERY_VEICULO_BY_ID = "SELECT * FROM " + VEICULOS_TABLE +
+            " WHERE _id = ?";
     public static final String INSERT_VEICULO = "INSERT INTO " + VEICULOS_TABLE +
             " (placa, proprietario_id, modelo, cor, area_id) VALUES (?, ?, ?, ?, ?)";
-    public static final String QUERY_AREA = "SELECT * FROM " + AREAS_TABLE +
+    public static final String QUERY_AREA_BY_NAME = "SELECT * FROM " + AREAS_TABLE +
             " WHERE nome = ?";
+    public static final String QUERY_AREA_BY_ID = "SELECT * FROM " + AREAS_TABLE +
+            " WHERE _id = ?";
     public static final String INSERT_AREA = "INSERT INTO " + AREAS_TABLE +
             " (nome, capacidade) VALUES (?, ?)";
 }

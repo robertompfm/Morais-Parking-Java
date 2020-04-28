@@ -1,8 +1,6 @@
 package com.larissacsf.model;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DataSource {
 
@@ -17,11 +15,14 @@ public class DataSource {
     private PreparedStatement dropAreaTable;
     private PreparedStatement createAreaTable;
 
-    private PreparedStatement queryProp;
+    private PreparedStatement queryPropByName;
+    private PreparedStatement queryPropById;
     private PreparedStatement insertProp;
-    private PreparedStatement queryVeic;
+    private PreparedStatement queryVeicByPlaca;
+    private PreparedStatement queryVeicById;
     private PreparedStatement insertVeic;
-    private PreparedStatement queryArea;
+    private PreparedStatement queryAreaByName;
+    private PreparedStatement queryAreaById;
     private PreparedStatement insertArea;
 
 
@@ -44,11 +45,14 @@ public class DataSource {
             dropAreaTable = conn.prepareStatement(Constants.DROP_AREAS_TABLE);
             createAreaTable = conn.prepareStatement(Constants.CREATE_AREAS_TABLE);
 
-            queryProp = conn.prepareStatement(Constants.QUERY_PROPRIETARIO);
+            queryPropByName = conn.prepareStatement(Constants.QUERY_PROPRIETARIO_BY_NAME);
+            queryPropById = conn.prepareStatement(Constants.QUERY_PROPRIETARIO_BY_ID);
             insertProp = conn.prepareStatement(Constants.INSERT_PROPRIETARIO);
-            queryVeic = conn.prepareStatement(Constants.QUERY_VEICULO);
+            queryVeicByPlaca = conn.prepareStatement(Constants.QUERY_VEICULO_BY_PLACA);
+            queryVeicById = conn.prepareStatement(Constants.QUERY_VEICULO_BY_ID);
             insertVeic = conn.prepareStatement(Constants.INSERT_VEICULO);
-            queryArea = conn.prepareStatement(Constants.QUERY_AREA);
+            queryAreaByName = conn.prepareStatement(Constants.QUERY_AREA_BY_NAME);
+            queryAreaById = conn.prepareStatement(Constants.QUERY_AREA_BY_ID);
             insertArea = conn.prepareStatement(Constants.INSERT_AREA);
 
             dropPropTable.execute();
@@ -86,10 +90,31 @@ public class DataSource {
             if (createAreaTable != null) {
                 createAreaTable.close();
             }
-            if (queryProp != null) {
-                queryProp.close();
+            if (queryPropByName != null) {
+                queryPropByName.close();
+            }
+            if (queryPropById != null) {
+                queryPropById.close();
+            }
+            if (queryVeicByPlaca != null) {
+                queryVeicByPlaca.close();
+            }
+            if (queryVeicById != null) {
+                queryVeicById.close();
+            }
+            if (queryAreaByName != null) {
+                queryAreaByName.close();
+            }
+            if (queryAreaById != null) {
+                queryAreaById.close();
             }
             if (insertProp != null) {
+                insertProp.close();
+            }
+            if (insertVeic != null) {
+                insertProp.close();
+            }
+            if (insertArea != null) {
                 insertProp.close();
             }
             if (conn != null) {
@@ -100,10 +125,29 @@ public class DataSource {
         }
     }
 
-    public Proprietario queryProprietario(String nome) {
+    public Proprietario queryProprietarioByName(String nome) {
         try {
-            queryProp.setString(1, nome.toUpperCase());
-            ResultSet results = queryProp.executeQuery();
+            queryPropByName.setString(1, nome.toUpperCase());
+            ResultSet results = queryPropByName.executeQuery();
+            if (results.next()) {
+                int currId = (results.getInt(1));
+                String currNome = (results.getString(2));
+                long currMat = (results.getLong(3));
+                String currCurso = (results.getString(4));
+                Proprietario proprietario = new Proprietario(currId, currNome, currMat, currCurso);
+                return proprietario;
+            }
+            return null;
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public Proprietario queryProprietarioById(int id) {
+        try {
+            queryPropById.setInt(1, id);
+            ResultSet results = queryPropById.executeQuery();
             if (results.next()) {
                 int currId = (results.getInt(1));
                 String currNome = (results.getString(2));
@@ -139,10 +183,28 @@ public class DataSource {
 
     }
 
-    public AreaEstacionamento queryArea(String nome) {
+    public AreaEstacionamento queryAreaByName(String nome) {
         try {
-            queryArea.setString(1, nome.toUpperCase());
-            ResultSet results = queryArea.executeQuery();
+            queryAreaByName.setString(1, nome.toUpperCase());
+            ResultSet results = queryAreaByName.executeQuery();
+            if (results.next()) {
+                int currId = (results.getInt(1));
+                String currNome = (results.getString(2));
+                int currCap = (results.getInt(3));
+                AreaEstacionamento area = new AreaEstacionamento(currId, currNome, currCap);
+                return area;
+            }
+            return null;
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public AreaEstacionamento queryAreaById(int id) {
+        try {
+            queryAreaById.setInt(1, id);
+            ResultSet results = queryAreaById.executeQuery();
             if (results.next()) {
                 int currId = (results.getInt(1));
                 String currNome = (results.getString(2));
@@ -167,6 +229,48 @@ public class DataSource {
             insertArea.setString(1, nome);
             insertArea.setLong(2, capacidade);
             insertArea.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public Veiculo queryVeiculo(String placa) {
+        try {
+            queryVeicByPlaca.setString(1, placa.toUpperCase());
+            ResultSet results = queryVeicByPlaca.executeQuery();
+            if (results.next()) {
+                int currId = (results.getInt(1));
+                String currPlaca = (results.getString(2));
+                int currPropId = (results.getInt(3));
+                String currModelo = (results.getString(4));
+                String currCor = (results.getString(5));
+                int currAreaId = (results.getInt(6));
+                Proprietario currProp = queryProprietarioById(currPropId);
+                String currAreaName = queryAreaById(currId).getNome();
+                Veiculo veiculo = new Veiculo(currId, currPlaca, currProp, currModelo, currCor, currAreaName);
+                return veiculo;
+            }
+            return null;
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public boolean insertVeiculo(String placa, String nome, long matricula, String curso, String modelo, String cor, String area) {
+        nome = nome.toUpperCase();
+        curso = curso.toUpperCase();
+//        Proprietario proprietario = queryProprietario(nome);
+//        if (proprietario != null) {
+//            return false;
+//        }
+        try {
+            insertProp.setString(1, nome);
+            insertProp.setLong(2, matricula);
+            insertProp.setString(3, curso);
+            insertProp.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
