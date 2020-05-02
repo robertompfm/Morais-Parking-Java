@@ -1,0 +1,23 @@
+.title-dashboard {
+    -fx-font-style: italic;
+}
+
+.label {
+    -fx-background-color: #444;
+    -fx-text-fill: #ddd;
+}
+
+.button {
+    -fx-background-color: #444;
+    -fx-text-fill: #ddd;
+}
+
+.button:hover {
+    -fx-background-color: #666;
+    -fx-text-fill: #ddd;
+}
+
+.button:pressed {
+    -fx-translate-x: -.5px;
+    -fx-translate-y: .5px;
+}
