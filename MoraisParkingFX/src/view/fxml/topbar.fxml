@@ -7,8 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.HBox?>
 
-
-<HBox prefHeight="60.0" prefWidth="800.0" styleClass="topmenu" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.Controller">
+<HBox prefHeight="60.0" prefWidth="1000.0" styleClass="topmenu" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.MainController">
    <children>
       <HBox HBox.hgrow="ALWAYS">
          <children>

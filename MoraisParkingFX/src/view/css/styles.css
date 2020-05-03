@@ -33,6 +33,8 @@
 
 .topmenu {
     -fx-background-color: #365a0f;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0px 0px 2px 0px;
 }
 
 .topmenu-btn {
