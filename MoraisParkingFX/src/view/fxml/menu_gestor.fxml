@@ -20,7 +20,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="monitoramentoButton" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="BINOCULARS" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>
@@ -34,7 +34,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="relatoriosButton" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="BOOK" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>
@@ -48,7 +48,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="areasButton" alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="FLAG" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>
@@ -62,7 +62,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="145.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="permissoesButton" alignment="CENTER_LEFT" layoutX="10.0" layoutY="145.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="UNLOCK" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>
@@ -76,7 +76,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="eventosButton" alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="CALENDAR" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>
@@ -90,7 +90,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="245.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="funcionariosButton" alignment="CENTER_LEFT" layoutX="10.0" layoutY="245.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="SUITCASE" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>

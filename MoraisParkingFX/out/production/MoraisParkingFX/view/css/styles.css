@@ -49,6 +49,10 @@ LOGIN
     -fx-scale-y: .98;
 }
 
+/*
+SIDEBAR
+*/
+
 .title-dashboard {
     -fx-font-style: italic;
 }
@@ -78,6 +82,9 @@ LOGIN
     -fx-translate-y: .5px;
 }
 
+/*
+TOPMENU
+*/
 .topmenu {
     -fx-background-color: #365a0f;
     -fx-border-color: #ddd;

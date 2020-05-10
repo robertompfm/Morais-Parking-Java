@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox prefHeight="500.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.LoginController">
    <children>
       <VBox alignment="CENTER" prefHeight="500.0" prefWidth="400.0" styleClass="login-logo-area">
@@ -41,7 +40,7 @@
                         <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </FontAwesomeIcon>
-                  <TextField prefWidth="270.0" styleClass="login-field-input">
+                  <TextField fx:id="username" prefWidth="270.0" styleClass="login-field-input">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -55,7 +54,7 @@
                         <Insets left="6.0" right="6.0" />
                      </HBox.margin>
                   </FontAwesomeIcon>
-                  <PasswordField prefWidth="270.0" styleClass="login-field-input">
+                  <PasswordField fx:id="password" prefWidth="270.0" styleClass="login-field-input">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -64,7 +63,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="268.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0">
                <children>
-                  <Button fx:id="loginButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="login-btn" text="Entrar">
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="300.0" styleClass="login-btn" text="Entrar">
                      <font>
                         <Font size="18.0" />
                      </font>

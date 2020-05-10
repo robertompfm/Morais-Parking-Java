@@ -18,6 +18,9 @@ public class DataCadastro {
     private PreparedStatement createVeicTable;
     private PreparedStatement dropAreaTable;
     private PreparedStatement createAreaTable;
+    private PreparedStatement dropUsuariosTable;
+    private PreparedStatement createUsuariosTable;
+
 
     private PreparedStatement queryPropByName;
     private PreparedStatement queryPropById;
@@ -28,6 +31,8 @@ public class DataCadastro {
     private PreparedStatement queryAreaByName;
     private PreparedStatement queryAreaById;
     private PreparedStatement insertArea;
+    private PreparedStatement insertUsuario;
+
 
 
     private DataCadastro() {
@@ -48,6 +53,7 @@ public class DataCadastro {
             createVeicTable = conn.prepareStatement(Constants.CREATE_VEICULOS_TABLE);
             dropAreaTable = conn.prepareStatement(Constants.DROP_AREAS_TABLE);
             createAreaTable = conn.prepareStatement(Constants.CREATE_AREAS_TABLE);
+            dropUsuariosTable = conn.prepareStatement(Constants.DROP_USUARIOS_TABLE);
 
             queryPropByName = conn.prepareStatement(Constants.QUERY_PROPRIETARIO_BY_NAME);
             queryPropById = conn.prepareStatement(Constants.QUERY_PROPRIETARIO_BY_ID);
@@ -58,6 +64,7 @@ public class DataCadastro {
             queryAreaByName = conn.prepareStatement(Constants.QUERY_AREA_BY_NAME);
             queryAreaById = conn.prepareStatement(Constants.QUERY_AREA_BY_ID);
             insertArea = conn.prepareStatement(Constants.INSERT_AREA);
+            insertUsuario = conn.prepareStatement(Constants.INSERT_USUARIO);
 
             dropPropTable.execute();
             createPropTable.execute();
@@ -65,6 +72,8 @@ public class DataCadastro {
             createVeicTable.execute();
             dropAreaTable.execute();
             createAreaTable.execute();
+            dropUsuariosTable.execute();
+            createUsuariosTable.execute();
 
 
             return true;
@@ -85,6 +94,9 @@ public class DataCadastro {
             if (dropAreaTable != null) {
                 dropAreaTable.close();
             }
+            if (dropUsuariosTable != null) {
+                dropUsuariosTable.close();
+            }
             if (createPropTable != null) {
                 createPropTable.close();
             }
@@ -93,6 +105,9 @@ public class DataCadastro {
             }
             if (createAreaTable != null) {
                 createAreaTable.close();
+            }
+            if (createUsuariosTable != null) {
+                createUsuariosTable.close();
             }
             if (queryPropByName != null) {
                 queryPropByName.close();

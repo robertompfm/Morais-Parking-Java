@@ -55,4 +55,8 @@ public class Test {
 
         DataSource.getInstance().close();
     }
+
+    public static void main(String[] args) {
+        DataSource.getInstance().open();
+    }
 }

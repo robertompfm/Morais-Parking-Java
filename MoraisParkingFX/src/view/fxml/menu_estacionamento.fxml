@@ -20,7 +20,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="monitoramentoButton" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="BINOCULARS" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>
@@ -34,7 +34,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="295.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="acessoButton" alignment="CENTER_LEFT" layoutX="10.0" layoutY="295.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="TICKET" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>
@@ -48,7 +48,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="245.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="proprietariosButton" alignment="CENTER_LEFT" layoutX="10.0" layoutY="245.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="USER" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>
@@ -62,7 +62,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="veiculosButton" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="CAR" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>
@@ -76,7 +76,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+      <HBox fx:id="ocorrenciasButton" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
          <children>
             <FontAwesomeIcon glyphName="PENCIL" size="1.2em" styleClass="sidebar-menu-btn-icon">
                <HBox.margin>
