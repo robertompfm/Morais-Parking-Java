@@ -1,15 +1,11 @@
 package control;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import model.TipoUsuario;
-import model.Usuario;
+import model.objects.TipoUsuario;
 import model.data.DataUsuarios;
 
 import java.io.IOException;
@@ -30,13 +26,13 @@ public class SidebarController implements Initializable {
             Parent menu = null;
             switch (tipo) {
                 case ESTACIONAMENTO:
-                    menu = FXMLLoader.load(getClass().getResource("/view/fxml/menu_estacionamento.fxml"));
+                    menu = FXMLLoader.load(getClass().getResource("/view/fxml/sidebar/menu_estacionamento.fxml"));
                     break;
                 case RH:
-                    menu = FXMLLoader.load(getClass().getResource("/view/fxml/menu_rh.fxml"));
+                    menu = FXMLLoader.load(getClass().getResource("/view/fxml/sidebar/menu_rh.fxml"));
                     break;
                 case GESTOR:
-                    menu = FXMLLoader.load(getClass().getResource("/view/fxml/menu_gestor.fxml"));
+                    menu = FXMLLoader.load(getClass().getResource("/view/fxml/sidebar/menu_gestor.fxml"));
                     break;
             }
             if (menu != null) {

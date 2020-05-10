@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="200.0"
+      styleClass="sidebar-vbox" stylesheets="@../../css/styles.css"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="control.sidebar.MenuEstController">
+
+   <children>
+      <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" styleClass="sidebar-menu-title" text="Estacionamento">
+         <VBox.margin>
+            <Insets left="30.0" right="30.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <HBox fx:id="monitoramentoButton" alignment="CENTER_LEFT" onMouseClicked="#openMonitoramento" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="BINOCULARS" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="296.0" text="MONITORAMENTO">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox fx:id="acessoButton" alignment="CENTER_LEFT" onMouseClicked="#openAcesso" layoutX="10.0" layoutY="295.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="TICKET" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="422.0" text="ACESSO">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox fx:id="proprietariosButton" alignment="CENTER_LEFT" onMouseClicked="#openProprietarios" layoutX="10.0" layoutY="245.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="USER" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="422.0" text="PROPRIETÁRIOS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox fx:id="veiculosButton" alignment="CENTER_LEFT" onMouseClicked="#openVeiculos" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="CAR" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="422.0" text="VEÍCULOS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox fx:id="ocorrenciasButton" alignment="CENTER_LEFT" onMouseClicked="#openOcorrencias" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="PENCIL" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="422.0" text="OCORRÊNCIAS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</VBox>

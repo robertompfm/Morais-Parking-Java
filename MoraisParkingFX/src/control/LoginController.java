@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Usuario;
+import model.objects.Usuario;
 import model.data.DataUsuarios;
 
 import java.io.IOException;

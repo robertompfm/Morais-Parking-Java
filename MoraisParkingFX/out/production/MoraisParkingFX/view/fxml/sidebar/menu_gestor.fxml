@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="200.0"
+      styleClass="sidebar-vbox" stylesheets="@../../css/styles.css"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="control.sidebar.MenuGestorController">
+   <children>
+      <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" styleClass="sidebar-menu-title" text="Gestor">
+         <VBox.margin>
+            <Insets left="30.0" right="30.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <HBox fx:id="monitoramentoButton" alignment="CENTER_LEFT" onMouseClicked="#openMonitoramento" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="BINOCULARS" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="296.0" text="MONITORAMENTO">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox fx:id="relatoriosButton" alignment="CENTER_LEFT" onMouseClicked="#openRelatorios" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="BOOK" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="422.0" text="RELATÓRIOS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox fx:id="areasButton" alignment="CENTER_LEFT" onMouseClicked="#openAreas" layoutX="10.0" layoutY="195.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="FLAG" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="422.0" text="ÁREAS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox fx:id="permissoesButton" alignment="CENTER_LEFT" onMouseClicked="#openPermissoes" layoutX="10.0" layoutY="145.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="UNLOCK" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="422.0" text="PERMISSÕES">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox fx:id="eventosButton" alignment="CENTER_LEFT" onMouseClicked="#openEventos" layoutX="10.0" layoutY="195.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="CALENDAR" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="422.0" text="EVENTOS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox fx:id="funcionariosButton" alignment="CENTER_LEFT" onMouseClicked="#openUsuarios" layoutX="10.0" layoutY="245.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-menu-btn">
+         <children>
+            <FontAwesomeIcon glyphName="SUITCASE" size="1.2em" styleClass="sidebar-menu-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="40.0" prefWidth="422.0" text="FUNCIONÁRIOS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</VBox>

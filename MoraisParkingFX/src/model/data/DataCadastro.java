@@ -1,8 +1,8 @@
 package model.data;
 
-import model.AreaEstacionamento;
-import model.Proprietario;
-import model.Veiculo;
+import model.objects.AreaEstacionamento;
+import model.objects.Proprietario;
+import model.objects.Veiculo;
 
 import java.sql.*;
 

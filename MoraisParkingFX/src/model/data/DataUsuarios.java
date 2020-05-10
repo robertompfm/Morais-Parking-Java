@@ -1,8 +1,7 @@
 package model.data;
 
-import model.Proprietario;
-import model.TipoUsuario;
-import model.Usuario;
+import model.objects.TipoUsuario;
+import model.objects.Usuario;
 
 import java.sql.*;
 

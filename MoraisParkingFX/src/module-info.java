@@ -5,10 +5,18 @@ module MoraisParkingFX {
     requires java.sql;
     requires fontawesomefx;
 
-    opens view;
+
     opens control;
-    opens model;
-    opens view.fxml;
-    opens view.css;
+    opens control.content;
+    opens control.sidebar;
+
     opens model.data;
+    opens model.objects;
+
+    opens view;
+    opens view.css;
+    opens view.fxml;
+    opens view.fxml.content;
+    opens view.fxml.sidebar;
+    opens view.fxml.topbar;
 }

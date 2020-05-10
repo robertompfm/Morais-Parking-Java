@@ -1,6 +1,6 @@
 package tests;
 
-import model.Usuario;
+import model.objects.Usuario;
 import model.data.DataCadastro;
 import model.data.DataUsuarios;
 
