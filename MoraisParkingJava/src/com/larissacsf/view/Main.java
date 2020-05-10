@@ -1,13 +1,16 @@
 package com.larissacsf.view;
 
-import com.larissacsf.model.Veiculo;
+import com.larissacsf.model.DataSource;
+import com.larissacsf.model.Proprietario;
+import com.larissacsf.test.Test;
+
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-	    Veiculo v1 = new Veiculo("Larissa", 20192007035, "Sistemas para Internet", "BAR7801", "Carro");
-	    System.out.println(v1.toString());
+//        Test.testSQLProp();
+        Test.testSQLArea();
 
     }
 }

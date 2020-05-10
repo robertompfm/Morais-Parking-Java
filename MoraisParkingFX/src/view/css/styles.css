@@ -1,0 +1,130 @@
+/*
+DEFAULTS
+*/
+.label {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ddd;
+}
+
+/*
+LOGIN
+*/
+.login-logo-area {
+    -fx-background-color: #365a0f;
+}
+
+.login-input-area {
+    -fx-background-color: #ddd;
+}
+
+.login-title {
+    -fx-text-fill: #444;
+}
+
+.login-field {
+    -fx-border-color: #444;
+    -fx-border-width: 2px 2px 2px 2px;
+}
+
+.login-field-fa {
+    -fx-fill: #444;
+}
+
+.login-field-input {
+    -fx-background-color: transparent;
+    -fx-text-fill: #444;
+}
+
+.login-btn {
+    -fx-background-color: #365a0f;
+    -fx-text-fill: #ddd;
+}
+
+.login-btn:hover {
+    -fx-opacity: 0.9;
+}
+
+.login-btn:pressed {
+    -fx-scale-x: .98;
+    -fx-scale-y: .98;
+}
+
+/*
+SIDEBAR
+*/
+
+.title-dashboard {
+    -fx-font-style: italic;
+}
+
+.sidebar-vbox {
+    -fx-background-color: #444;
+}
+
+
+.sidebar-menu-title {
+    -fx-border-color: #ddd;
+    -fx-border-width: 0px 0px .5px 0px;
+}
+
+.sidebar-menu-btn:hover {
+    -fx-border-radius: 0px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0px 0px 0px 4px;
+}
+
+.sidebar-menu-btn-icon {
+    -fx-fill: #ddd;
+}
+
+.sidebar-menu-btn:pressed {
+    -fx-translate-x: -.5px;
+    -fx-translate-y: .5px;
+}
+
+/*
+TOPMENU
+*/
+.topmenu {
+    -fx-background-color: #365a0f;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0px 0px 2px 0px;
+}
+
+.topmenu-btn {
+    -fx-background-color: #365a0f;
+    -fx-text-fill: #ddd;
+}
+
+.topmenu-btn-icon {
+    -fx-fill: #ddd;
+    -fx-opacity: .8;
+}
+
+.topmenu-btn-icon:hover {
+    -fx-opacity: 1;
+}
+
+.topmenu-btn-icon:pressed {
+    -fx-scale-x: .9;
+    -fx-scale-y: .9;
+}
+
+.topmenu-btn .context-menu {
+    -fx-background-color: #365a0f;
+}
+
+.topmenu-btn-item {
+    -fx-background-color: transparent;
+}
+
+.topmenu-btn-item .label {
+    -fx-background-color: transparent;
+    -fx-padding: 5px 10px 5px 10px;
+    -fx-text-fill: #ddd;
+}
+
+.topmenu-btn-item:hover .label {
+    -fx-background-color: #ddd;
+    -fx-text-fill: #365a0f;
+}

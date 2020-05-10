@@ -1,4 +1,7 @@
 package com.larissacsf.model;
 
-public class Area {
+public class Controller {
+
+
+
 }

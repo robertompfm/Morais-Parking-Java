@@ -1,4 +1,4 @@
-package com.larissacsf.model;
+package model.objects;
 
 
 public class Veiculo {

@@ -1,4 +1,4 @@
-package com.larissacsf.model;
+package model.objects;
 
 import java.util.ArrayList;
 import java.util.List;
