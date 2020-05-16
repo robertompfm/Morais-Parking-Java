@@ -5,8 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
-import model.objects.TipoUsuario;
-import model.data.DataUsuarios;
+import model.SetorUsuario;
+import dao.DataUsuarios;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +22,7 @@ public class SidebarController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             DataUsuarios dataUsuarios = DataUsuarios.getInstance();
-            TipoUsuario tipo = dataUsuarios.getCurrentUser().getTipo();
+            SetorUsuario tipo = dataUsuarios.getCurrentUser().getSetor();
             Parent menu = null;
             switch (tipo) {
                 case ESTACIONAMENTO:

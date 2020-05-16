@@ -1,21 +1,32 @@
 package tests;
 
-import model.objects.Usuario;
-import model.data.DataCadastro;
-import model.data.DataUsuarios;
+import model.SetorUsuario;
+import model.Usuario;
+import dao.DataCadastro;
+import dao.DataUsuarios;
 
 public class Test {
     private static void testUsuarios() {
-        Usuario usuario;
+        Usuario roberto = new Usuario("Roberto", SetorUsuario.ESTACIONAMENTO,
+                "robertompfm@gmail.com", "beto");
+        Usuario larissa = new Usuario("Larissa", SetorUsuario.RH,
+                "larissa@cauane.com", "hunterhunter");
+        Usuario iria = new Usuario("Iria", SetorUsuario.GESTOR,
+                "iria@guazzi.com", "soju");
+        Usuario arthur = new Usuario("Arthur", SetorUsuario.GESTOR,
+                "arthur@lacet.com", "arthur");
         DataUsuarios instance = DataUsuarios.getInstance();
-//        DataUsuarios instance = new DataUsuarios();
         instance.open();
-        instance.insertUsuario("robertompfm", "betobalanco", "ESTACIONAMENTO");
-        instance.insertUsuario("larissacauane", "hunterhunter", "RH");
-        instance.insertUsuario("iriaguazzi", "soju", "GESTOR");
+        instance.insertUsuario(roberto);
+        instance.insertUsuario(larissa);
+        instance.insertUsuario(iria);
+        instance.insertUsuario(arthur);
 
-        System.out.println(instance.queryUsuarioByUsername("robertompfm"));
-        System.out.println(instance.queryUsuarioByUsername("melancia"));
+        System.out.println(instance.queryUsuarioByEmail("robertompfm@gmail.com"));
+        System.out.println(instance.queryUsuarioByEmail("melancia"));
+        System.out.println(instance.queryUsuarioByEmail("arthur@lacet.com"));
+        instance.deleteUsuarioByEmail("arthur@lacet.com");
+        System.out.println(instance.queryUsuarioByEmail("arthur@lacet.com"));
         instance.close();
     }
 

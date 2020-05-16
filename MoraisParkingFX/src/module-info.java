@@ -10,8 +10,9 @@ module MoraisParkingFX {
     opens control.content;
     opens control.sidebar;
 
-    opens model.data;
-    opens model.objects;
+    opens dao;
+
+    opens model;
 
     opens view;
     opens view.css;
