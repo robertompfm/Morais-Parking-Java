@@ -1,6 +1,9 @@
 package tests;
 
+import dao.DataAreas;
+import model.AreaEstacionamento;
 import model.SetorUsuario;
+import model.TipoVeiculo;
 import model.Usuario;
 import dao.DataCadastro;
 import dao.DataUsuarios;
@@ -30,12 +33,37 @@ public class Test {
         instance.close();
     }
 
+    private static void testAreas() {
+        AreaEstacionamento carros = new AreaEstacionamento("Carros", 10,
+                TipoVeiculo.CARRO, false);
+        AreaEstacionamento onibus = new AreaEstacionamento("Onibus", 5,
+                TipoVeiculo.ONIBUS, false);
+        AreaEstacionamento motos = new AreaEstacionamento("Motos", 20,
+                TipoVeiculo.MOTOCICLETA, false);
+        AreaEstacionamento deficientes = new AreaEstacionamento("Deficientes", 5,
+                TipoVeiculo.CARRO, true);
+        DataAreas instance = DataAreas.getInstance();
+        instance.open();
+        instance.insertArea(carros);
+        instance.insertArea(onibus);
+        instance.insertArea(motos);
+        instance.insertArea(deficientes);
+
+        System.out.println(instance.queryAreaByName("Carros"));
+        System.out.println(instance.queryAreaByName("Transporte"));
+        System.out.println(instance.queryAreaByName("Deficientes"));
+        instance.deleteAreaByName("Deficientes");
+        System.out.println(instance.queryAreaByName("Deficientes"));
+        instance.close();
+    }
+
     public static void testCadastro() {
         DataCadastro.getInstance().open();
     }
 
     public static void main(String[] args) {
-        testUsuarios();
+//        testUsuarios();
+        testAreas();
 //        testCadastro();
     }
 }

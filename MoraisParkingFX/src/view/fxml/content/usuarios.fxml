@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.PasswordField?>
 <VBox prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.content.UsuariosController">
 
     <children>
@@ -42,8 +43,8 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" spacing="40.0">
                <children>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="375.0" styleClass="content-field" />
-                  <ComboBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" styleClass="content-field" />
+                  <TextField fx:id="nomeFieldAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="375.0" styleClass="content-field" />
+                  <ComboBox fx:id="setorComboBoxAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" styleClass="content-field" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="12.0" layoutY="142.0" spacing="40.0">
@@ -62,13 +63,13 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="12.0" layoutY="172.0" spacing="40.0">
                <children>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="375.0" styleClass="content-field" />
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" styleClass="content-field" />
+                  <TextField fx:id="emailFieldAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="375.0" styleClass="content-field" />
+                  <PasswordField fx:id="passwordFieldAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" styleClass="content-field" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="12.0" layoutY="352.0" spacing="40.0">
                <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Cadastrar">
+                  <Button fx:id="buttonAdd" onAction="#createUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Cadastrar">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -80,7 +81,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível realizar o cadastro">
+                  <Label fx:id="warningLabelAdd" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível realizar o cadastro">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -125,8 +126,8 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" spacing="40.0">
                <children>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="375.0" styleClass="content-field" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Remover">
+                  <TextField fx:id="emailFieldDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="375.0" styleClass="content-field" />
+                  <Button fx:id="buttonDel" onAction="#removeUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Remover">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -135,7 +136,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível encontrar o usuário">
+                  <Label fx:id="warningLabelDel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível encontrar o usuário">
                      <font>
                         <Font size="16.0" />
                      </font>

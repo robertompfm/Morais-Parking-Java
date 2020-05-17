@@ -30,6 +30,25 @@ public final class Constants {
             " WHERE email = ?";
 
 
+    // AREAS
+    public static final String DROP_AREAS_TABLE = "DROP TABLE IF EXISTS " +
+            AREAS_TABLE;
+    public static final String CREATE_AREAS_TABLE = "CREATE TABLE IF NOT EXISTS " +
+            AREAS_TABLE +
+            " (_id INTEGER PRIMARY KEY, nome TEXT NOT NULL UNIQUE, capacidade INTEGER NOT NULL," +
+            " tipo_veiculo TEXT NOT NULL, especial INTEGER NOT NULL)";
+
+    public static final String QUERY_AREA_BY_NAME = "SELECT * FROM " + AREAS_TABLE +
+            " WHERE nome = ?";
+    public static final String QUERY_AREA_BY_ID = "SELECT * FROM " + AREAS_TABLE +
+            " WHERE _id = ?";
+    public static final String INSERT_AREA = "INSERT INTO " + AREAS_TABLE +
+            " (nome, capacidade, tipo_veiculo, especial) VALUES (?, ?, ?, ?)";
+    public static final String DELETE_AREA = "DELETE FROM " + AREAS_TABLE +
+            " WHERE nome = ?";
+
+
+
     // PROPRIETARIO
     public static final String DROP_PROPRIETARIOS_TABLE = "DROP TABLE IF EXISTS " +
             PROPRIETARIOS_TABLE;
@@ -61,17 +80,5 @@ public final class Constants {
             " (placa, proprietario_id, modelo, cor, area_id) VALUES (?, ?, ?, ?, ?)";
 
 
-    // AREAS
-    public static final String DROP_AREAS_TABLE = "DROP TABLE IF EXISTS " +
-            AREAS_TABLE;
-    public static final String CREATE_AREAS_TABLE = "CREATE TABLE IF NOT EXISTS " +
-            AREAS_TABLE +
-            " (_id INTEGER PRIMARY KEY, nome TEXT NOT NULL UNIQUE, capacidade INTEGER NOT NULL)";
 
-    public static final String QUERY_AREA_BY_NAME = "SELECT * FROM " + AREAS_TABLE +
-            " WHERE nome = ?";
-    public static final String QUERY_AREA_BY_ID = "SELECT * FROM " + AREAS_TABLE +
-            " WHERE _id = ?";
-    public static final String INSERT_AREA = "INSERT INTO " + AREAS_TABLE +
-            " (nome, capacidade) VALUES (?, ?)";
 }

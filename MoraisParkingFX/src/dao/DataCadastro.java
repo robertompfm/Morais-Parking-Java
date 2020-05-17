@@ -202,100 +202,100 @@ public class DataCadastro {
 
     }
 
-    public AreaEstacionamento queryAreaByName(String nome) {
-        try {
-            queryAreaByName.setString(1, nome.toUpperCase());
-            ResultSet results = queryAreaByName.executeQuery();
-            if (results.next()) {
-                int currId = (results.getInt(1));
-                String currNome = (results.getString(2));
-                int currCap = (results.getInt(3));
-                AreaEstacionamento area = new AreaEstacionamento(currId, currNome, currCap);
-                return area;
-            }
-            return null;
-        } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            return null;
-        }
-    }
+//    public AreaEstacionamento queryAreaByName(String nome) {
+//        try {
+//            queryAreaByName.setString(1, nome.toUpperCase());
+//            ResultSet results = queryAreaByName.executeQuery();
+//            if (results.next()) {
+//                int currId = (results.getInt(1));
+//                String currNome = (results.getString(2));
+//                int currCap = (results.getInt(3));
+//                AreaEstacionamento area = new AreaEstacionamento(currId, currNome, currCap);
+//                return area;
+//            }
+//            return null;
+//        } catch (SQLException e) {
+//            System.out.println("SQLException: " + e.getMessage());
+//            return null;
+//        }
+//    }
 
-    public AreaEstacionamento queryAreaById(int id) {
-        try {
-            queryAreaById.setInt(1, id);
-            ResultSet results = queryAreaById.executeQuery();
-            if (results.next()) {
-                int currId = (results.getInt(1));
-                String currNome = (results.getString(2));
-                int currCap = (results.getInt(3));
-                AreaEstacionamento area = new AreaEstacionamento(currId, currNome, currCap);
-                return area;
-            }
-            return null;
-        } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            return null;
-        }
-    }
+//    public AreaEstacionamento queryAreaById(int id) {
+//        try {
+//            queryAreaById.setInt(1, id);
+//            ResultSet results = queryAreaById.executeQuery();
+//            if (results.next()) {
+//                int currId = (results.getInt(1));
+//                String currNome = (results.getString(2));
+//                int currCap = (results.getInt(3));
+//                AreaEstacionamento area = new AreaEstacionamento(currId, currNome, currCap);
+//                return area;
+//            }
+//            return null;
+//        } catch (SQLException e) {
+//            System.out.println("SQLException: " + e.getMessage());
+//            return null;
+//        }
+//    }
 
-    public boolean insertArea(String nome, int capacidade) {
-        nome = nome.toUpperCase();
-//        AreaEstacionamento area = queryArea(nome);
-//        if (area != null) {
+//    public boolean insertArea(String nome, int capacidade) {
+//        nome = nome.toUpperCase();
+////        AreaEstacionamento area = queryArea(nome);
+////        if (area != null) {
+////            return false;
+////        }
+//        try {
+//            insertArea.setString(1, nome);
+//            insertArea.setLong(2, capacidade);
+//            insertArea.executeUpdate();
+//            return true;
+//        } catch (SQLException e) {
+//            System.out.println("SQLException: " + e.getMessage());
 //            return false;
 //        }
-        try {
-            insertArea.setString(1, nome);
-            insertArea.setLong(2, capacidade);
-            insertArea.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            return false;
-        }
-    }
+//    }
 
-    public Veiculo queryVeiculo(String placa) {
-        try {
-            queryVeicByPlaca.setString(1, placa.toUpperCase());
-            ResultSet results = queryVeicByPlaca.executeQuery();
-            if (results.next()) {
-                int currId = (results.getInt(1));
-                String currPlaca = (results.getString(2));
-                int currPropId = (results.getInt(3));
-                String currModelo = (results.getString(4));
-                String currCor = (results.getString(5));
-                int currAreaId = (results.getInt(6));
-                Proprietario currProp = queryProprietarioById(currPropId);
-                String currAreaName = queryAreaById(currId).getNome();
-                Veiculo veiculo = new Veiculo(currId, currPlaca, currProp, currModelo, currCor, currAreaName);
-                return veiculo;
-            }
-            return null;
-        } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public boolean insertVeiculo(String placa, String nome, long matricula, String curso, String modelo, String cor, String area) {
-        nome = nome.toUpperCase();
-        curso = curso.toUpperCase();
-//        Proprietario proprietario = queryProprietario(nome);
-//        if (proprietario != null) {
+//    public Veiculo queryVeiculo(String placa) {
+//        try {
+//            queryVeicByPlaca.setString(1, placa.toUpperCase());
+//            ResultSet results = queryVeicByPlaca.executeQuery();
+//            if (results.next()) {
+//                int currId = (results.getInt(1));
+//                String currPlaca = (results.getString(2));
+//                int currPropId = (results.getInt(3));
+//                String currModelo = (results.getString(4));
+//                String currCor = (results.getString(5));
+//                int currAreaId = (results.getInt(6));
+//                Proprietario currProp = queryProprietarioById(currPropId);
+//                String currAreaName = queryAreaById(currId).getNome();
+//                Veiculo veiculo = new Veiculo(currId, currPlaca, currProp, currModelo, currCor, currAreaName);
+//                return veiculo;
+//            }
+//            return null;
+//        } catch (SQLException e) {
+//            System.out.println("SQLException: " + e.getMessage());
+//            return null;
+//        }
+//    }
+//
+//    public boolean insertVeiculo(String placa, String nome, long matricula, String curso, String modelo, String cor, String area) {
+//        nome = nome.toUpperCase();
+//        curso = curso.toUpperCase();
+////        Proprietario proprietario = queryProprietario(nome);
+////        if (proprietario != null) {
+////            return false;
+////        }
+//        try {
+//            insertProp.setString(1, nome);
+//            insertProp.setLong(2, matricula);
+//            insertProp.setString(3, curso);
+//            insertProp.executeUpdate();
+//            return true;
+//        } catch (SQLException e) {
+//            System.out.println("SQLException: " + e.getMessage());
 //            return false;
 //        }
-        try {
-            insertProp.setString(1, nome);
-            insertProp.setLong(2, matricula);
-            insertProp.setString(3, curso);
-            insertProp.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            return false;
-        }
-
-    }
+//
+//    }
 
 }

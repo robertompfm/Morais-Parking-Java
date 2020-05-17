@@ -19,19 +19,19 @@ public class Estacionamento {
 		this.veiculosCadastrados = new ArrayList<>();
 		this.areasEspeciais = new ArrayList<>();
 		this.capacidadeMaxima = capacidade;
-		this.areaComum = new AreaEstacionamento("Comum", capacidade);
+//		this.areaComum = new AreaEstacionamento("Comum", capacidade);
 	}
 	
 	
 	// FIND METHODS
-	private AreaEstacionamento identificarArea(String nome) {
-		for (AreaEstacionamento area : areasEspeciais) {
-			if (area.getNome().equalsIgnoreCase(nome)) {
-				return area;
-			}
-		}
-		return null;
-	}
+//	private AreaEstacionamento identificarArea(String nome) {
+//		for (AreaEstacionamento area : areasEspeciais) {
+//			if (area.getNome().equalsIgnoreCase(nome)) {
+//				return area;
+//			}
+//		}
+//		return null;
+//	}
 	
 	
 	private Proprietario identificarProprietario(String nome) {
@@ -66,31 +66,31 @@ public class Estacionamento {
 	}
 	
 	
-	public boolean cadastrarArea(String nome, int capacidade) {
-		AreaEstacionamento area = identificarArea(nome);
-		int vagasRestantes = areaComum.getCapacidade() - capacidade;
-		if (area == null && vagasRestantes >= 0) {
-			area = new AreaEstacionamento(nome, capacidade);
-			areasEspeciais.add(area);
-			areaComum.setCapacidade(vagasRestantes);
-			return true;
-		}
-		return false;
-	}
-	
-	
-	public boolean cadastrarVeiculo(String nomeProp, long matricula, String curso, String placa, String modelo, String cor, String nomeArea) {
-		Veiculo veiculo = identificarVeiculo(placa);
-		AreaEstacionamento area = identificarArea(nomeArea);
-		if (veiculo == null && area != null) {
-			cadastrarProprietario(nomeProp, matricula, curso);
-			Proprietario proprietario = identificarProprietario(nomeProp);
-			veiculo = new Veiculo(placa, proprietario, modelo, cor, nomeArea);
-			veiculosCadastrados.add(veiculo);
-			return true;
-		}
-		return false;
-	}
+//	public boolean cadastrarArea(String nome, int capacidade) {
+//		AreaEstacionamento area = identificarArea(nome);
+//		int vagasRestantes = areaComum.getCapacidade() - capacidade;
+//		if (area == null && vagasRestantes >= 0) {
+//			area = new AreaEstacionamento(nome, capacidade);
+//			areasEspeciais.add(area);
+//			areaComum.setCapacidade(vagasRestantes);
+//			return true;
+//		}
+//		return false;
+//	}
+//
+//
+//	public boolean cadastrarVeiculo(String nomeProp, long matricula, String curso, String placa, String modelo, String cor, String nomeArea) {
+//		Veiculo veiculo = identificarVeiculo(placa);
+//		AreaEstacionamento area = identificarArea(nomeArea);
+//		if (veiculo == null && area != null) {
+//			cadastrarProprietario(nomeProp, matricula, curso);
+//			Proprietario proprietario = identificarProprietario(nomeProp);
+//			veiculo = new Veiculo(placa, proprietario, modelo, cor, nomeArea);
+//			veiculosCadastrados.add(veiculo);
+//			return true;
+//		}
+//		return false;
+//	}
 	
 	
 	// REMOVE METHODS
@@ -104,15 +104,15 @@ public class Estacionamento {
 	}
 	
 	
-	public boolean excluirArea(String nome) {
-		AreaEstacionamento area = identificarArea(nome);
-		if (area != null) {
-			areasEspeciais.remove(area);
-			areaComum.setCapacidade(areaComum.getCapacidade() + area.getCapacidade());
-			return true;
-		}
-		return false;
-	}
+//	public boolean excluirArea(String nome) {
+//		AreaEstacionamento area = identificarArea(nome);
+//		if (area != null) {
+//			areasEspeciais.remove(area);
+//			areaComum.setCapacidade(areaComum.getCapacidade() + area.getCapacidade());
+//			return true;
+//		}
+//		return false;
+//	}
 	
 	
 	public boolean excluirVeiculo(String placa) {
@@ -126,54 +126,54 @@ public class Estacionamento {
 	
 	
 	// MONITORING METHODS
-	public boolean autorizarEntrada(String placa, String modelo, String cor) {
-		Veiculo veiculo = identificarVeiculo(placa);
-		if (veiculo == null) {
-			veiculo = new Veiculo(placa, modelo, cor);
-		}
-		String nomeArea = veiculo.getArea();
-		AreaEstacionamento area = identificarArea(nomeArea);
-		if (area != null && area.getTaxaOcupacao() < 1) {
-			return area.adicionarVeiculo(veiculo);
-		} else {
-			return areaComum.adicionarVeiculo(veiculo);
-		}
-	}
+//	public boolean autorizarEntrada(String placa, String modelo, String cor) {
+//		Veiculo veiculo = identificarVeiculo(placa);
+//		if (veiculo == null) {
+//			veiculo = new Veiculo(placa, modelo, cor);
+//		}
+//		String nomeArea = veiculo.getArea();
+//		AreaEstacionamento area = identificarArea(nomeArea);
+//		if (area != null && area.getTaxaOcupacao() < 1) {
+//			return area.adicionarVeiculo(veiculo);
+//		} else {
+//			return areaComum.adicionarVeiculo(veiculo);
+//		}
+//	}
 	
 	
-	public boolean autorizarSaida(String placa, String modelo, String cor) {
-		Veiculo veiculo = identificarVeiculo(placa);
-		if (veiculo == null) {
-			veiculo = new Veiculo(placa, modelo, cor);
-		}
-		if (areaComum.removerVeiculo(veiculo)) {
-			return true;
-		}
-		for (AreaEstacionamento area : areasEspeciais) {
-			if (area.removerVeiculo(veiculo)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	
-	// REPORT METHOD
-	public String getStatus() {
-		StringBuilder sb = new StringBuilder("MORAIS PARKING STATUS\n\n");
-		sb.append(areaComum + "\n");
-		int ocupacao = areaComum.getOcupacao();
-		for (AreaEstacionamento area : areasEspeciais) {
-			sb.append(area + "\n");
-			ocupacao += area.getOcupacao();
-		}
-		sb.append("\n");
-		double txOcupacao = ((double) ocupacao) / capacidadeMaxima;
-		String txOcupacaoPercent = String.format("%.2f", txOcupacao);
-		sb.append("Ocupacao total: "  + ocupacao + " / " + capacidadeMaxima 
-				+ " (" + txOcupacaoPercent + "%)");
-		return sb.toString();
-	}
+//	public boolean autorizarSaida(String placa, String modelo, String cor) {
+//		Veiculo veiculo = identificarVeiculo(placa);
+//		if (veiculo == null) {
+//			veiculo = new Veiculo(placa, modelo, cor);
+//		}
+//		if (areaComum.removerVeiculo(veiculo)) {
+//			return true;
+//		}
+//		for (AreaEstacionamento area : areasEspeciais) {
+//			if (area.removerVeiculo(veiculo)) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+//
+//
+//	// REPORT METHOD
+//	public String getStatus() {
+//		StringBuilder sb = new StringBuilder("MORAIS PARKING STATUS\n\n");
+//		sb.append(areaComum + "\n");
+//		int ocupacao = areaComum.getOcupacao();
+//		for (AreaEstacionamento area : areasEspeciais) {
+//			sb.append(area + "\n");
+//			ocupacao += area.getOcupacao();
+//		}
+//		sb.append("\n");
+//		double txOcupacao = ((double) ocupacao) / capacidadeMaxima;
+//		String txOcupacaoPercent = String.format("%.2f", txOcupacao);
+//		sb.append("Ocupacao total: "  + ocupacao + " / " + capacidadeMaxima
+//				+ " (" + txOcupacaoPercent + "%)");
+//		return sb.toString();
+//	}
 
 	
 	// GETTERS AND SETTERS
@@ -197,24 +197,24 @@ public class Estacionamento {
 	}
 
 
-	public List<AreaEstacionamento> getAreasEspeciais() {
-		return areasEspeciais;
-	}
+//	public List<AreaEstacionamento> getAreasEspeciais() {
+//		return areasEspeciais;
+//	}
 
 
-	public void setAreasEspeciais(List<AreaEstacionamento> areasEspeciais) {
-		this.areasEspeciais = areasEspeciais;
-	}
+//	public void setAreasEspeciais(List<AreaEstacionamento> areasEspeciais) {
+//		this.areasEspeciais = areasEspeciais;
+//	}
 
 
-	public AreaEstacionamento getAreaComum() {
-		return areaComum;
-	}
+//	public AreaEstacionamento getAreaComum() {
+//		return areaComum;
+//	}
 
 
-	public void setAreaComum(AreaEstacionamento areaComum) {
-		this.areaComum = areaComum;
-	}
+//	public void setAreaComum(AreaEstacionamento areaComum) {
+//		this.areaComum = areaComum;
+//	}
 
 
 	public int getCapacidadeMaxima() {
