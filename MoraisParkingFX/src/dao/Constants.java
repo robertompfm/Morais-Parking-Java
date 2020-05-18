@@ -42,19 +42,21 @@ public final class Constants {
             " WHERE nome = ?";
     public static final String QUERY_AREA_BY_ID = "SELECT * FROM " + AREAS_TABLE +
             " WHERE _id = ?";
+    public static final String QUERY_SPECIAL_AREAS_NAME = "SELECT nome FROM " + AREAS_TABLE +
+            " WHERE especial = 1";
     public static final String INSERT_AREA = "INSERT INTO " + AREAS_TABLE +
             " (nome, capacidade, tipo_veiculo, especial) VALUES (?, ?, ?, ?)";
     public static final String DELETE_AREA = "DELETE FROM " + AREAS_TABLE +
-            " WHERE nome = ?";
+            " WHERE especial = 1 AND nome = ?";
 
 
 
-    // PROPRIETARIO
+    // PROPRIETARIOS
     public static final String DROP_PROPRIETARIOS_TABLE = "DROP TABLE IF EXISTS " +
             PROPRIETARIOS_TABLE;
     public static final String CREATE_PROPRIETARIOS_TABLE = "CREATE TABLE IF NOT EXISTS " +
             PROPRIETARIOS_TABLE +
-            " (_id INTEGER PRIMARY KEY, nome TEXT NOT NULL UNIQUE, matricula INTEGER UNIQUE, curso TEXT)";
+            " (_id INTEGER PRIMARY KEY, nome TEXT NOT NULL UNIQUE, matricula INTEGER, curso TEXT)";
 
     public static final String QUERY_PROPRIETARIO_BY_NAME = "SELECT * FROM " + PROPRIETARIOS_TABLE +
             " WHERE nome = ?";
@@ -62,6 +64,8 @@ public final class Constants {
             " WHERE _id = ?";
     public static final String INSERT_PROPRIETARIO = "INSERT INTO " + PROPRIETARIOS_TABLE +
             " (nome, matricula, curso) VALUES (?, ?, ?)";
+    public static final String DELETE_PROPRIETARIO = "DELETE FROM " + PROPRIETARIOS_TABLE +
+            " WHERE nome = ?";
 
 
     // VEICULO

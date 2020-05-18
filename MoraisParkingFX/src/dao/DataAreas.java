@@ -6,6 +6,7 @@ import model.TipoVeiculo;
 import model.Usuario;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DataAreas {
 
@@ -19,6 +20,7 @@ public class DataAreas {
     private PreparedStatement queryAreasByNameStatement;
     private PreparedStatement insertAreaStatement;
     private PreparedStatement deleteAreaStatement;
+    private PreparedStatement querySpecialAreasNameStatement;
 
     private AreaEstacionamento currentArea;
 
@@ -52,7 +54,7 @@ public class DataAreas {
             insertAreaStatement = conn.prepareStatement(Constants.INSERT_AREA);
             queryAreasByNameStatement = conn.prepareStatement(Constants.QUERY_AREA_BY_NAME);
             deleteAreaStatement = conn.prepareStatement(Constants.DELETE_AREA);
-
+            querySpecialAreasNameStatement = conn.prepareStatement(Constants.QUERY_SPECIAL_AREAS_NAME);
 
             return true;
         } catch (SQLException e) {
@@ -78,6 +80,9 @@ public class DataAreas {
             if (deleteAreaStatement != null) {
                 deleteAreaStatement.close();
             }
+            if (querySpecialAreasNameStatement != null) {
+                querySpecialAreasNameStatement.close();
+            }
             if (conn != null) {
                 conn.close();
             }
@@ -101,6 +106,21 @@ public class DataAreas {
                 return area;
             }
             return null;
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public ArrayList<String> querySpecialAreasName() {
+        try {
+            ResultSet results = querySpecialAreasNameStatement.executeQuery();
+            ArrayList<String> names = new ArrayList<>();
+            while (results.next()) {
+                String currName = results.getString(1);
+                names.add(currName);
+            }
+            return names;
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
             return null;

@@ -1,12 +1,12 @@
 package tests;
 
 import dao.DataAreas;
-import model.AreaEstacionamento;
-import model.SetorUsuario;
-import model.TipoVeiculo;
-import model.Usuario;
+import dao.DataProprietarios;
+import model.*;
 import dao.DataCadastro;
 import dao.DataUsuarios;
+
+import java.util.ArrayList;
 
 public class Test {
     private static void testUsuarios() {
@@ -49,21 +49,46 @@ public class Test {
         instance.insertArea(motos);
         instance.insertArea(deficientes);
 
-        System.out.println(instance.queryAreaByName("Carros"));
-        System.out.println(instance.queryAreaByName("Transporte"));
-        System.out.println(instance.queryAreaByName("Deficientes"));
-        instance.deleteAreaByName("Deficientes");
-        System.out.println(instance.queryAreaByName("Deficientes"));
+        ArrayList<String> specialAreas = instance.querySpecialAreasName();
+        System.out.println("Special areas:");
+        for (String name : specialAreas) {
+            System.out.println("\t" + name);
+        }
+
+//        System.out.println(instance.queryAreaByName("Carros"));
+//        System.out.println(instance.queryAreaByName("Transporte"));
+//        System.out.println(instance.queryAreaByName("Deficientes"));
+//        instance.deleteAreaByName("Deficientes");
+//        System.out.println(instance.queryAreaByName("Deficientes"));
+//        instance.deleteAreaByName("Carros");
+//        System.out.println(instance.queryAreaByName("Carros"));
         instance.close();
     }
 
-    public static void testCadastro() {
-        DataCadastro.getInstance().open();
+    public static void testProprietarios() {
+        Proprietario roberto = new Proprietario("Roberto", 11021093l, "SpI");
+        Proprietario larissa = new Proprietario("Larissa", 11021093l, "SpI");
+        Proprietario iria = new Proprietario("Iria", 11021093l, "SpI");
+        Proprietario arthur = new Proprietario("Arthur", 11021093l, "SpI");
+
+        DataProprietarios instance = DataProprietarios.getInstance();
+        instance.open();
+        instance.insertOwner(roberto);
+        instance.insertOwner(larissa);
+        instance.insertOwner(iria);
+        instance.insertOwner(arthur);
+
+        System.out.println(instance.queryOwnerByName("Roberto"));
+        System.out.println(instance.queryOwnerByName("Junior"));
+        instance.deleteOwner("Arthur");
+        System.out.println(instance.queryOwnerByName("Arthur"));
+        instance.close();
+
     }
 
     public static void main(String[] args) {
 //        testUsuarios();
-        testAreas();
-//        testCadastro();
+//        testAreas();
+        testProprietarios();
     }
 }

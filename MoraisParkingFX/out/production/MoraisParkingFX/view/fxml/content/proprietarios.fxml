@@ -41,8 +41,8 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" spacing="40.0">
                <children>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
-                  <TextField layoutX="516.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" styleClass="content-field" />
+                  <TextField fx:id="nomeFieldAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
+                  <TextField fx:id="matriculaFieldAdd" layoutX="516.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" styleClass="content-field" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="80.0" spacing="40.0">
@@ -61,8 +61,8 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" spacing="40.0">
                <children>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Cadastrar">
+                  <TextField fx:id="cursoFieldAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
+                  <Button fx:id="buttonAdd" onAction="#createOwner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Cadastrar">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -70,7 +70,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
                <children>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível realizar o cadastro">
+                  <Label fx:id="warningLabelAdd" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível realizar o cadastro">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -115,8 +115,8 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" spacing="40.0">
                <children>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Remover">
+                  <TextField fx:id="nomeFieldDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
+                  <Button fx:id="buttonDel" onAction="#removeOwner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Remover">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -124,7 +124,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível encontrar o proprietário">
+                  <Label fx:id="warningLabelDel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível encontrar o proprietário">
                      <font>
                         <Font size="16.0" />
                      </font>

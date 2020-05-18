@@ -93,7 +93,7 @@ public class UsuariosController implements Initializable {
             clearCreateUserFields();
         } else {
             warningLabelAdd.setTextFill(Color.RED);
-            warningLabelAdd.setText("Não foi possível criar o usuário");
+            warningLabelAdd.setText("Não foi possível cadastrar o usuário");
         }
         dataUsuarios.close();
 
@@ -107,12 +107,18 @@ public class UsuariosController implements Initializable {
         }
         dataUsuarios.open();
         Usuario usuario = dataUsuarios.queryUsuarioByEmail(email);
-        if (usuario != null) {
+        if (usuario == null) {
+            warningLabelDel.setTextFill(Color.RED);
+            warningLabelDel.setText("Não foi possível encontrar o usuário");
+        } else if (dataUsuarios.getCurrentUser().getEmail().equals(usuario.getEmail())) {
+            warningLabelDel.setTextFill(Color.RED);
+            warningLabelDel.setText("Não é possível remover seu próprio cadastro");
+        } else {
             confirmationDialog.setContentText(
                     "Usuario: " + usuario.getNome() +
                             "\nSetor: " + usuario.getSetor() +
-                            "\nEmail: " + usuario.getPassword()
-                    );
+                            "\nEmail: " + usuario.getEmail()
+            );
             if (confirmationDialog.showAndWait().get() == ButtonType.OK) {
                 if (dataUsuarios.deleteUsuarioByEmail(email)) {
                     warningLabelDel.setTextFill(Color.GREEN);
@@ -125,14 +131,12 @@ public class UsuariosController implements Initializable {
             } else {
                 warningLabelDel.setTextFill(Color.RED);
                 warningLabelDel.setText("Operação abortada. O usuário não foi removido");
-            };
-        } else {
-            warningLabelDel.setTextFill(Color.RED);
-            warningLabelDel.setText("Não foi possível encontrar o usuário");
+            }
         }
         dataUsuarios.close();
     }
 
+    // VALIDATION METHODS
     private boolean validateName(String name) {
         if (name.equals("")) {
             warningLabelAdd.setTextFill(Color.RED);
@@ -187,6 +191,7 @@ public class UsuariosController implements Initializable {
         return true;
     }
 
+    // CLEAR METHODS
     public void clearCreateUserFields() {
         nomeFieldAdd.clear();
         setorComboBoxAdd.getSelectionModel().clearSelection();

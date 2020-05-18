@@ -1,11 +1,11 @@
 package model;
 
 public class Proprietario {
-	
+
+	private int id;
 	private String nome;
 	private long matricula;
 	private String curso;
-	private int id;
 	
 
 	// CONSTRUCTOR
