@@ -128,3 +128,44 @@ TOPMENU
     -fx-background-color: #ddd;
     -fx-text-fill: #365a0f;
 }
+
+/*
+CONTENT
+*/
+.content-btn {
+    -fx-background-color: #365a0f;
+    -fx-text-fill: #ddd;
+}
+
+.content-btn:hover {
+    -fx-opacity: 0.9;
+}
+
+.content-btn:pressed {
+    -fx-scale-x: .98;
+    -fx-scale-y: .98;
+}
+
+.content-label-title {
+    -fx-text-fill: #365a0f;
+}
+
+.content-label-field-title {
+    -fx-text-fill: #444;
+}
+
+.content-label-warning {
+    -fx-text-fill: #ba0000;
+}
+
+.content-field {
+    -fx-border-color: #444;
+    -fx-background-color: transparent;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-text-fill: #444;
+}
+
+.content-frame {
+    -fx-border-color: #444;
+    -fx-border-width: 2px 2px 2px 2px;
+}

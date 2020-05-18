@@ -12,8 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.objects.Usuario;
-import model.data.DataUsuarios;
+import model.Usuario;
+import dao.DataUsuarios;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,7 +43,7 @@ public class LoginController implements Initializable {
     public void login(ActionEvent event) throws IOException {
         DataUsuarios dataUsuarios = DataUsuarios.getInstance();
         dataUsuarios.open();
-        Usuario usuario = dataUsuarios.queryUsuarioByUsername(username.getText());
+        Usuario usuario = dataUsuarios.queryUsuarioByEmail(username.getText());
         if (usuario == null) {
             loginFailed.setContentText("Usuário não encontrado");
             loginFailed.show();
