@@ -74,7 +74,7 @@ public final class Constants {
     public static final String CREATE_VEICULOS_TABLE = "CREATE TABLE IF NOT EXISTS " +
             VEICULOS_TABLE +
             " (_id INTEGER PRIMARY KEY, placa TEXT NOT NULL UNIQUE, proprietario_id INTEGER, " +
-            " modelo TEXT, cor TEXT, area_id INTEGER)";
+            " tipo_veiculo TEXT NOT NULL, modelo TEXT, cor TEXT)";
 
     public static final String QUERY_VEICULO_BY_PLACA = "SELECT * FROM " + VEICULOS_TABLE +
             " WHERE placa = ?";
