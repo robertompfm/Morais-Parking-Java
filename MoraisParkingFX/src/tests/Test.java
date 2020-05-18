@@ -1,10 +1,7 @@
 package tests;
 
-import dao.DataAreas;
-import dao.DataProprietarios;
+import dao.*;
 import model.*;
-import dao.DataCadastro;
-import dao.DataUsuarios;
 
 import java.util.ArrayList;
 
@@ -66,10 +63,10 @@ public class Test {
     }
 
     public static void testProprietarios() {
-        Proprietario roberto = new Proprietario("Roberto", 11021093l, "SpI");
-        Proprietario larissa = new Proprietario("Larissa", 11021093l, "SpI");
-        Proprietario iria = new Proprietario("Iria", 11021093l, "SpI");
-        Proprietario arthur = new Proprietario("Arthur", 11021093l, "SpI");
+        Proprietario roberto = new Proprietario(1,"Roberto", 11021093l, "SpI");
+        Proprietario larissa = new Proprietario(2,"Larissa", 11021093l, "SpI");
+        Proprietario iria = new Proprietario(3,"Iria", 11021093l, "SpI");
+        Proprietario arthur = new Proprietario(4, "Arthur", 11021093l, "SpI");
 
         DataProprietarios instance = DataProprietarios.getInstance();
         instance.open();
@@ -80,8 +77,44 @@ public class Test {
 
         System.out.println(instance.queryOwnerByName("Roberto"));
         System.out.println(instance.queryOwnerByName("Junior"));
-        instance.deleteOwner("Arthur");
-        System.out.println(instance.queryOwnerByName("Arthur"));
+//        instance.deleteOwner("Arthur");
+//        System.out.println(instance.queryOwnerByName("Arthur"));
+
+        ArrayList<String> placas = instance.queryOwnersPlatesByName("Iria");
+        for (String placa : placas) {
+            System.out.println(placa);
+        }
+
+//        instance.deleteOwner("Iria");
+
+        instance.close();
+
+    }
+
+    public static void testVeiculos() {
+        Proprietario roberto = new Proprietario(1,"Roberto", 11021093l, "SpI");
+        Proprietario larissa = new Proprietario("Larissa", 11021093l, "SpI");
+        Proprietario iria = new Proprietario(3, "Iria", 11021093l, "SpI");
+        Proprietario arthur = new Proprietario("Arthur", 11021093l, "SpI");
+
+        Veiculo fordka = new Veiculo("QFI7289", roberto, "Ford Ka", "Preto", TipoVeiculo.CARRO);
+        Veiculo hb20 = new Veiculo("7777", iria, "HB20", "Vermelho", TipoVeiculo.CARRO);
+        Veiculo ferrari = new Veiculo("S0JU", iria, "Ferrari", "Vermelho", TipoVeiculo.CARRO);
+
+        DataVeiculos instance = DataVeiculos.getInstance();
+        instance.open();
+        instance.insertVehicle(fordka);
+        instance.insertVehicle(hb20);
+        instance.insertVehicle(ferrari);
+
+        Veiculo veiculo = instance.queryVehicleByPlate("QFI7289");
+        System.out.println(veiculo);
+//        instance.deleteVehicle("QFI7289");
+//        veiculo = instance.queryVehicleByPlate("QFI7289");
+//        System.out.println(veiculo);
+//        System.out.println(instance.queryOwnerByName("Junior"));
+//        instance.deleteOwner("Arthur");
+//        System.out.println(instance.queryOwnerByName("Arthur"));
         instance.close();
 
     }
@@ -90,5 +123,6 @@ public class Test {
 //        testUsuarios();
 //        testAreas();
         testProprietarios();
+//        testVeiculos();
     }
 }

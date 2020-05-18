@@ -1,10 +1,9 @@
 package dao;
 
 import model.Proprietario;
-import model.SetorUsuario;
-import model.Usuario;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DataProprietarios {
     private static Connection conn;
@@ -18,6 +17,9 @@ public class DataProprietarios {
     private PreparedStatement insertOwnerStatement;
     private PreparedStatement deleteOwnerStatement;
     private PreparedStatement queryOwnerByIdStatement;
+
+    private PreparedStatement queryOwnersPlatesStatement;
+    private PreparedStatement deleteOwnersVehicleStatement;
 
     private Proprietario currentProprietario;
 
@@ -53,6 +55,9 @@ public class DataProprietarios {
             deleteOwnerStatement = conn.prepareStatement(Constants.DELETE_PROPRIETARIO);
             queryOwnerByIdStatement = conn.prepareStatement(Constants.QUERY_PROPRIETARIO_BY_ID);
 
+            queryOwnersPlatesStatement = conn.prepareStatement(Constants.QUERY_VEICULOS_BY_PROPRIETARIO_NAME);
+            deleteOwnersVehicleStatement = conn.prepareStatement(Constants.DELETE_VEICULO);
+
             return true;
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
@@ -71,11 +76,20 @@ public class DataProprietarios {
             if (queryOwnerByNameStatement != null) {
                 queryOwnerByNameStatement.close();
             }
+            if (queryOwnerByIdStatement != null) {
+                queryOwnerByIdStatement.close();
+            }
             if (insertOwnerStatement != null) {
                 insertOwnerStatement.close();
             }
             if (deleteOwnerStatement != null) {
                 deleteOwnerStatement.close();
+            }
+            if (queryOwnersPlatesStatement != null) {
+                queryOwnersPlatesStatement.close();
+            }
+            if (deleteOwnersVehicleStatement != null) {
+                deleteOwnersVehicleStatement.close();
             }
             if (conn != null) {
                 conn.close();
@@ -104,6 +118,21 @@ public class DataProprietarios {
         }
     }
 
+    public ArrayList<String> queryOwnersPlatesByName(String nome) {
+        try {
+            queryOwnersPlatesStatement.setString(1, nome);
+            ResultSet results = queryOwnersPlatesStatement.executeQuery();
+            ArrayList<String> placas = new ArrayList<>();
+            while (results.next()) {
+                placas.add(results.getString(1));
+            }
+            return placas;
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+    }
+
     public boolean insertOwner(Proprietario proprietario) {
         try {
             insertOwnerStatement.setString(1, proprietario.getNome());
@@ -118,13 +147,32 @@ public class DataProprietarios {
     }
 
     public boolean deleteOwner(String nome) {
+        ArrayList<String> placas = queryOwnersPlatesByName(nome);
+
         try {
+            conn.setAutoCommit(false);
+
+            for (String placa : placas) {
+                deleteOwnersVehicleStatement.setString(1, placa);
+                deleteOwnersVehicleStatement.execute();
+            }
             deleteOwnerStatement.setString(1, nome);
             deleteOwnerStatement.execute();
             return true;
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
-            return false;
+            try {
+                conn.rollback();
+            } catch (SQLException e2) {
+                System.out.println("Couldn't rollback. SQLException: " + e2.getMessage());
+            }
+        } finally {
+            try {
+                conn.setAutoCommit(true);
+            } catch (SQLException e) {
+                System.out.println("Couldn't reset auto-commit. SQLException: " + e.getMessage());
+            }
         }
+        return false;
     }
 }

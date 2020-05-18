@@ -53,7 +53,10 @@ public class ProprietariosController implements Initializable {
 
         confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setTitle("Confirmation dialog");
-        confirmationDialog.setHeaderText("Você realmente deseja remover o proprietário?");
+        confirmationDialog.setHeaderText(
+                "Você realmente deseja remover o proprietário?" +
+                        "\nTodos os veículos do proprietário também serão removidos"
+        );
     }
 
     // BUTTON ACTION METHODS

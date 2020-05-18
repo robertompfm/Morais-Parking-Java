@@ -74,14 +74,25 @@ public final class Constants {
     public static final String CREATE_VEICULOS_TABLE = "CREATE TABLE IF NOT EXISTS " +
             VEICULOS_TABLE +
             " (_id INTEGER PRIMARY KEY, placa TEXT NOT NULL UNIQUE, proprietario_id INTEGER, " +
-            " tipo_veiculo TEXT NOT NULL, modelo TEXT, cor TEXT)";
+            " modelo TEXT, cor TEXT, tipo_veiculo TEXT NOT NULL)";
 
-    public static final String QUERY_VEICULO_BY_PLACA = "SELECT * FROM " + VEICULOS_TABLE +
-            " WHERE placa = ?";
+//    public static final String QUERY_VEICULO_BY_PLACA = "SELECT * FROM " + VEICULOS_TABLE +
+//            " WHERE placa = ?";
+    public static final String QUERY_VEICULO_BY_PLACA =  "SELECT " + VEICULOS_TABLE +
+        "._id, placa, proprietario_id, nome, matricula, curso, modelo, cor, tipo_veiculo FROM " +
+        VEICULOS_TABLE + " INNER JOIN " + PROPRIETARIOS_TABLE + " ON " +
+        VEICULOS_TABLE + ".proprietario_id" + " = " + PROPRIETARIOS_TABLE + "._id" +
+        " WHERE placa = ?";
     public static final String QUERY_VEICULO_BY_ID = "SELECT * FROM " + VEICULOS_TABLE +
             " WHERE _id = ?";
+    public static final String QUERY_VEICULOS_BY_PROPRIETARIO_NAME = "SELECT placa FROM " +
+            VEICULOS_TABLE + " JOIN " + PROPRIETARIOS_TABLE + " ON " +
+            VEICULOS_TABLE + ".proprietario_id" + " = " + PROPRIETARIOS_TABLE + "._id" +
+            " WHERE nome = ?";
     public static final String INSERT_VEICULO = "INSERT INTO " + VEICULOS_TABLE +
-            " (placa, proprietario_id, modelo, cor, area_id) VALUES (?, ?, ?, ?, ?)";
+            " (placa, proprietario_id, modelo, cor, tipo_veiculo) VALUES (?, ?, ?, ?, ?)";
+    public static final String DELETE_VEICULO = "DELETE FROM " + VEICULOS_TABLE +
+            " WHERE placa = ?";
 
 
 

@@ -9,78 +9,76 @@ public class Veiculo {
 	private Proprietario proprietario;
 	private String modelo;
 	private String cor;
-	private String area;
+	private TipoVeiculo tipoVeiculo;
 	
 	
 	// CONSTRUCTORS
-	public Veiculo(String placa, String modelo, String cor) {
-		this(-1, placa, new Proprietario("Desconhecido", 0l, "N/A"), modelo, cor, "Comum");
+	public Veiculo(String placa, TipoVeiculo tipoVeiculo) {
+		this(placa, new Proprietario("DESCONHECIDO", -1l, "N/A"), "N/A", "N/A", tipoVeiculo);
 	}
 
-	public Veiculo(String placa, Proprietario proprietario, String modelo, String cor, String area) {
-		this(-1, placa, proprietario, modelo, cor, area);
+	public Veiculo(String placa, Proprietario proprietario, String modelo, String cor, TipoVeiculo tipoVeiculo) {
+		this(-1, placa, proprietario, modelo, cor, tipoVeiculo);
 	}
 
-	public Veiculo(int id, String placa, Proprietario proprietario, String modelo, String cor, String area) {
+	public Veiculo(int id, String placa, Proprietario proprietario, String modelo, String cor, TipoVeiculo tipoVeiculo) {
 		this.id = id;
 		this.placa = placa;
 		this.proprietario = proprietario;
 		this.modelo = modelo;
 		this.cor = cor;
-		this.area = area;
+		this.tipoVeiculo = tipoVeiculo;
 	}
 
 
 	// GETTERS AND SETTERS
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getPlaca() {
 		return placa;
 	}
-
 
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
 
-
 	public Proprietario getProprietario() {
 		return proprietario;
 	}
-
 
 	public void setProprietario(Proprietario proprietario) {
 		this.proprietario = proprietario;
 	}
 
-
-	public String getArea() {
-		return area;
-	}
-
-
-	public void setArea(String area) {
-		this.area = area;
-	}
-	
-
 	public String getModelo() {
 		return modelo;
 	}
-
 
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
 
-
 	public String getCor() {
 		return cor;
 	}
-
 
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
 
+	public TipoVeiculo getTipoVeiculo() {
+		return tipoVeiculo;
+	}
+
+	public void setTipoVeiculo(TipoVeiculo tipoVeiculo) {
+		this.tipoVeiculo = tipoVeiculo;
+	}
 
 	// TO STRING
 	@Override
