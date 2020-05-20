@@ -42,8 +42,8 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" spacing="40.0">
                <children>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Validar">
+                  <TextField fx:id="proprietarioNomeAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
+                  <Button fx:id="validacaoProprietarioBtnAdd" onAction="#validateOwnerAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Validar">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -71,9 +71,9 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="12.0" layoutY="172.0" spacing="40.0">
                <children>
-                  <ComboBox layoutX="368.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0" styleClass="content-field" />
-                  <ComboBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" styleClass="content-field" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Adicionar">
+                  <ComboBox fx:id="placaComboBoxAdd" layoutX="368.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0" styleClass="content-field" />
+                  <ComboBox fx:id="areaComboBoxAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" styleClass="content-field" />
+                  <Button fx:id="btnAdd" onAction="#givePermission" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Adicionar">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -82,7 +82,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível conceder a permissão">
+                  <Label fx:id="warningLabelAdd" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível conceder a permissão">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -127,8 +127,8 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" spacing="40.0">
                <children>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Validar">
+                  <TextField fx:id="proprietarioNomeDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
+                  <Button fx:id="validacaoProprietarioBtnDel" onAction="#validateOwnerDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Validar">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -156,9 +156,9 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="12.0" layoutY="172.0" spacing="40.0">
                <children>
-                  <ComboBox layoutX="368.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0" styleClass="content-field" />
-                  <ComboBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" styleClass="content-field" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Adicionar">
+                  <ComboBox fx:id="placaComboBoxDel" layoutX="368.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0" styleClass="content-field" />
+                  <ComboBox fx:id="areaComboBoxDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" styleClass="content-field" />
+                  <Button fx:id="btnDel" onAction="#removePermission" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Remover">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -167,7 +167,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível conceder a permissão">
+                  <Label fx:id="warningLabelDel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="640.0" styleClass="content-label-warning" text="Não foi possível conceder a permissão">
                      <font>
                         <Font size="16.0" />
                      </font>

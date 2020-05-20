@@ -106,9 +106,9 @@ public class Test {
         instance.insertVehicle(fordka);
         instance.insertVehicle(hb20);
         instance.insertVehicle(ferrari);
-
-        Veiculo veiculo = instance.queryVehicleByPlate("QFI7289");
-        System.out.println(veiculo);
+//
+//        Veiculo veiculo = instance.queryVehicleByPlate("QFI7289");
+//        System.out.println(veiculo);
 //        instance.deleteVehicle("QFI7289");
 //        veiculo = instance.queryVehicleByPlate("QFI7289");
 //        System.out.println(veiculo);
@@ -119,10 +119,45 @@ public class Test {
 
     }
 
+    public static void testPermissoes() {
+        DataPermissoes instance = DataPermissoes.getInstance();
+
+        Proprietario roberto = new Proprietario(1,"Roberto", 11021093l, "SpI");
+        Proprietario larissa = new Proprietario("Larissa", 11021093l, "SpI");
+        Proprietario iria = new Proprietario(3, "Iria", 11021093l, "SpI");
+        Proprietario arthur = new Proprietario("Arthur", 11021093l, "SpI");
+
+        Veiculo fordka = new Veiculo(1,"QFI7289", roberto, "Ford Ka", "Preto", TipoVeiculo.CARRO);
+        Veiculo hb20 = new Veiculo(2, "7777", iria, "HB20", "Vermelho", TipoVeiculo.CARRO);
+        Veiculo ferrari = new Veiculo(3,"S0JU", iria, "Ferrari", "Vermelho", TipoVeiculo.CARRO);
+
+        AreaEstacionamento deficientes = new AreaEstacionamento(4,"Deficientes", 5,
+                TipoVeiculo.CARRO, true);
+
+        Permissao permissao01 = new Permissao(fordka, deficientes);
+        Permissao permissao02 = new Permissao(hb20, deficientes);
+        Permissao permissao03 = new Permissao(ferrari, deficientes);
+
+        instance.open();
+//        instance.insertPermission(permissao01);
+//        instance.insertPermission(permissao02);
+//        instance.insertPermission(permissao03);
+
+//        instance.deletePermission(1, 4);
+//        instance.deletePermission(2, 4);
+//        instance.deletePermission(3, 4);
+//        System.out.println(instance.queryPermission(3, 4));
+//        System.out.println(instance.hasPermission(3, 4));
+//        System.out.println(instance.hasPermission(1, 6));
+        instance.close();
+
+    }
+
     public static void main(String[] args) {
 //        testUsuarios();
 //        testAreas();
-        testProprietarios();
+//        testProprietarios();
 //        testVeiculos();
+        testPermissoes();
     }
 }

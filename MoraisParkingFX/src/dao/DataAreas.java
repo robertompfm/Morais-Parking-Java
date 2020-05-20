@@ -18,6 +18,7 @@ public class DataAreas {
     private PreparedStatement createAreasTable;
 
     private PreparedStatement queryAreasByNameStatement;
+    private PreparedStatement queryAreasByIdStatement;
     private PreparedStatement insertAreaStatement;
     private PreparedStatement deleteAreaStatement;
     private PreparedStatement querySpecialAreasNameStatement;
@@ -55,6 +56,7 @@ public class DataAreas {
             queryAreasByNameStatement = conn.prepareStatement(Constants.QUERY_AREA_BY_NAME);
             deleteAreaStatement = conn.prepareStatement(Constants.DELETE_AREA);
             querySpecialAreasNameStatement = conn.prepareStatement(Constants.QUERY_SPECIAL_AREAS_NAME);
+            queryAreasByIdStatement = conn.prepareStatement(Constants.QUERY_AREA_BY_ID);
 
             return true;
         } catch (SQLException e) {
@@ -95,6 +97,27 @@ public class DataAreas {
         try {
             queryAreasByNameStatement.setString(1, nome);
             ResultSet results = queryAreasByNameStatement.executeQuery();
+            if (results.next()) {
+                int currId = results.getInt(1);
+                String currNome = results.getString(2);
+                int currCapacidade = results.getInt(3);
+                TipoVeiculo currTipoVeiculo = TipoVeiculo.valueOf(results.getString(4));
+                boolean currEspecial = results.getBoolean(5);
+                AreaEstacionamento area = new AreaEstacionamento(currId, currNome,
+                        currCapacidade, currTipoVeiculo, currEspecial);
+                return area;
+            }
+            return null;
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public AreaEstacionamento queryAreaById(int areaId) {
+        try {
+            queryAreasByIdStatement.setInt(1, areaId);
+            ResultSet results = queryAreasByIdStatement.executeQuery();
             if (results.next()) {
                 int currId = results.getInt(1);
                 String currNome = results.getString(2);

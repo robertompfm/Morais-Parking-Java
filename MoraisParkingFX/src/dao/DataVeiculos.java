@@ -120,6 +120,31 @@ public class DataVeiculos {
         }
     }
 
+    public Veiculo queryVehicleById(int vehicleId) {
+        try {
+            queryVehicleByIdStatement.setInt(1, vehicleId);
+            ResultSet results = queryVehicleByIdStatement.executeQuery();
+            if (results.next()) {
+                int id = results.getInt(1);
+                String placa = results.getString(2);
+                int propId = results.getInt(3);
+                String nome = results.getString(4);
+                long matricula = results.getLong(5);
+                String curso = results.getString(6);
+                String modelo = results.getString(7);
+                String cor = results.getString(8);
+                TipoVeiculo tipo = TipoVeiculo.valueOf(results.getString(9));
+                Proprietario proprietario = new Proprietario(propId, nome, matricula, curso);
+                Veiculo veiculo = new Veiculo(id, placa, proprietario, modelo, cor, tipo);
+                return veiculo;
+            }
+            return null;
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+    }
+
     public boolean insertVehicle(Veiculo veiculo) {
         try {
             insertVehicleStatement.setString(1, veiculo.getPlaca());

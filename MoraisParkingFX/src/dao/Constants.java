@@ -11,6 +11,7 @@ public final class Constants {
     public static final String PROPRIETARIOS_TABLE = "proprietarios";
     public static final String VEICULOS_TABLE = "veiculos";
     public static final String AREAS_TABLE = "areas_estacionamento";
+    public static final String PERMISSOES_TABLE = "permissoes";
     public static final String ESTACIONAMENTO_TABLE = "estacionamento";
 
 
@@ -83,8 +84,13 @@ public final class Constants {
         VEICULOS_TABLE + " INNER JOIN " + PROPRIETARIOS_TABLE + " ON " +
         VEICULOS_TABLE + ".proprietario_id" + " = " + PROPRIETARIOS_TABLE + "._id" +
         " WHERE placa = ?";
-    public static final String QUERY_VEICULO_BY_ID = "SELECT * FROM " + VEICULOS_TABLE +
-            " WHERE _id = ?";
+//    public static final String QUERY_VEICULO_BY_ID = "SELECT * FROM " + VEICULOS_TABLE +
+//            " WHERE _id = ?";
+    public static final String QUERY_VEICULO_BY_ID =  "SELECT " + VEICULOS_TABLE +
+            "._id, placa, proprietario_id, nome, matricula, curso, modelo, cor, tipo_veiculo FROM " +
+            VEICULOS_TABLE + " INNER JOIN " + PROPRIETARIOS_TABLE + " ON " +
+            VEICULOS_TABLE + ".proprietario_id" + " = " + PROPRIETARIOS_TABLE + "._id" +
+            " WHERE " + VEICULOS_TABLE + "._id = ?";
     public static final String QUERY_VEICULOS_BY_PROPRIETARIO_NAME = "SELECT placa FROM " +
             VEICULOS_TABLE + " JOIN " + PROPRIETARIOS_TABLE + " ON " +
             VEICULOS_TABLE + ".proprietario_id" + " = " + PROPRIETARIOS_TABLE + "._id" +
@@ -94,6 +100,22 @@ public final class Constants {
     public static final String DELETE_VEICULO = "DELETE FROM " + VEICULOS_TABLE +
             " WHERE placa = ?";
 
+    // PERMISSOES
+    public static final String DROP_PERMISSOES_TABLE = "DROP TABLE IF EXISTS " +
+            PERMISSOES_TABLE;
+    public static final String CREATE_PERMISSOES_TABLE = "CREATE TABLE IF NOT EXISTS " +
+            PERMISSOES_TABLE +
+            " (_id INTEGER PRIMARY KEY, proprietario_id INTEGER NOT NULL, proprietario TEXT NOT NULL, " +
+            " veiculo_id INTEGER NOT NULL, placa TEXT NOT NULL, area_id INTEGER NOT NULL, area TEXT NOT NULL)";
 
+    public static final  String QUERY_PERMISSAO = "SELECT * FROM " + PERMISSOES_TABLE +
+            " WHERE " + "veiculo_id = ?" + " AND " + "area_id = ?";
+    public static final  String QUERY_PERMISSOES_BY_VEICULO_ID = "SELECT * FROM " + PERMISSOES_TABLE +
+            " WHERE " + "veiculo_id = ?";
+    public static final String INSERT_PERMISSAO = "INSERT INTO " + PERMISSOES_TABLE +
+            " (proprietario_id, proprietario, veiculo_id, placa, area_id, area)" +
+            " VALUES (?, ?, ?, ?, ?, ?)";
+    public static final String DELETE_PERMISSAO = "DELETE FROM " + PERMISSOES_TABLE +
+            " WHERE " + "veiculo_id = ?" + " AND " + "area_id = ?";
 
 }

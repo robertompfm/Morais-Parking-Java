@@ -96,7 +96,7 @@ public class VeiculosController implements Initializable {
         dataProprietarios.close();
         if (locked && proprietario != null) {
             dataProprietarios.setCurrentProprietario(proprietario);
-            inableFields();
+            enableFields();
             warningLabelAdd.setText("");
         } else if (locked) {
             warningLabelAdd.setText("Não foi possível encontrar o proprietario");
@@ -237,7 +237,7 @@ public class VeiculosController implements Initializable {
     }
 
 
-    private void inableFields() {
+    private void enableFields() {
         placaFieldAdd.setDisable(false);
         modeloField.setDisable(false);
         corField.setDisable(false);
