@@ -16,7 +16,7 @@
          <children>
             <HBox HBox.hgrow="ALWAYS">
                <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSidebar" prefHeight="55.0" prefWidth="55.0" styleClass="topmenu-btn">
+                  <Button fx:id="openMenuBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSidebar" prefHeight="55.0" prefWidth="55.0" styleClass="topmenu-btn">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -30,7 +30,7 @@
                <children>
                   <MenuButton alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" styleClass="topmenu-btn">
                      <items>
-                        <MenuItem mnemonicParsing="false" styleClass="topmenu-btn-item" text="Logout" />
+                        <MenuItem onAction="#logout" mnemonicParsing="false" styleClass="topmenu-btn-item" text="Logout" />
                      </items>
                      <HBox.margin>
                         <Insets right="40.0" />
