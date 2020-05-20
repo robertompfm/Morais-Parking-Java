@@ -139,13 +139,13 @@ public class Test {
         Permissao permissao03 = new Permissao(ferrari, deficientes);
 
         instance.open();
-//        instance.insertPermission(permissao01);
-//        instance.insertPermission(permissao02);
-//        instance.insertPermission(permissao03);
+        instance.insertPermission(permissao01);
+        instance.insertPermission(permissao02);
+        instance.insertPermission(permissao03);
 
-//        instance.deletePermission(1, 4);
-//        instance.deletePermission(2, 4);
-//        instance.deletePermission(3, 4);
+        instance.deletePermission(1, 4);
+        instance.deletePermission(2, 4);
+        instance.deletePermission(3, 4);
 //        System.out.println(instance.queryPermission(3, 4));
 //        System.out.println(instance.hasPermission(3, 4));
 //        System.out.println(instance.hasPermission(1, 6));

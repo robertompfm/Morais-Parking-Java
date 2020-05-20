@@ -195,17 +195,22 @@ public class PermissoesController implements Initializable {
         dataAreas.close();;
 
         dataPermissoes.open();
-        Permissao permissao = dataPermissoes.queryPermission(veiculo.getId(), area.getId());
-        if (permissao == null) {
+//        Permissao permissao = dataPermissoes.queryPermission(veiculo.getId(), area.getId());
+        boolean hasPermission = dataPermissoes.hasPermission(veiculo.getId(), area.getId());
+        if (!hasPermission) {
 
             warningLabelDel.setTextFill(Color.RED);
             warningLabelDel.setText("O veículo não possui essa permissão");
         } else {
-            confirmationDialog.setContentText(permissao.toString());
+            confirmationDialog.setContentText(
+                    "Veículo :" + veiculo.getModelo() + " " + veiculo.getCor() +
+                            "(" + veiculo.getPlaca() + ")" +
+                            "\nÁrea: " + area.getNome()
+            );
             if (confirmationDialog.showAndWait().get() == ButtonType.OK) {
                 if (dataPermissoes.deletePermission(
-                        permissao.getVeiculo().getId(),
-                        permissao.getArea().getId()
+                        veiculo.getId(),
+                        area.getId()
                 )) {
                     warningLabelDel.setTextFill(Color.GREEN);
                     warningLabelDel.setText("Permissão removida com sucesso!");

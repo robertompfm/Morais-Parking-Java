@@ -103,18 +103,24 @@ public final class Constants {
     // PERMISSOES
     public static final String DROP_PERMISSOES_TABLE = "DROP TABLE IF EXISTS " +
             PERMISSOES_TABLE;
+//    public static final String CREATE_PERMISSOES_TABLE = "CREATE TABLE IF NOT EXISTS " +
+//            PERMISSOES_TABLE +
+//            " (_id INTEGER PRIMARY KEY, proprietario_id INTEGER NOT NULL, proprietario TEXT NOT NULL, " +
+//            " veiculo_id INTEGER NOT NULL, placa TEXT NOT NULL, area_id INTEGER NOT NULL, area TEXT NOT NULL)";
     public static final String CREATE_PERMISSOES_TABLE = "CREATE TABLE IF NOT EXISTS " +
             PERMISSOES_TABLE +
-            " (_id INTEGER PRIMARY KEY, proprietario_id INTEGER NOT NULL, proprietario TEXT NOT NULL, " +
-            " veiculo_id INTEGER NOT NULL, placa TEXT NOT NULL, area_id INTEGER NOT NULL, area TEXT NOT NULL)";
+            " (_id INTEGER PRIMARY KEY, veiculo_id INTEGER NOT NULL, area_id INTEGER NOT NULL)";
 
     public static final  String QUERY_PERMISSAO = "SELECT * FROM " + PERMISSOES_TABLE +
             " WHERE " + "veiculo_id = ?" + " AND " + "area_id = ?";
     public static final  String QUERY_PERMISSOES_BY_VEICULO_ID = "SELECT * FROM " + PERMISSOES_TABLE +
             " WHERE " + "veiculo_id = ?";
+//    public static final String INSERT_PERMISSAO = "INSERT INTO " + PERMISSOES_TABLE +
+//            " (proprietario_id, proprietario, veiculo_id, placa, area_id, area)" +
+//            " VALUES (?, ?, ?, ?, ?, ?)";
     public static final String INSERT_PERMISSAO = "INSERT INTO " + PERMISSOES_TABLE +
-            " (proprietario_id, proprietario, veiculo_id, placa, area_id, area)" +
-            " VALUES (?, ?, ?, ?, ?, ?)";
+            " (veiculo_id, area_id)" +
+            " VALUES (?, ?)";
     public static final String DELETE_PERMISSAO = "DELETE FROM " + PERMISSOES_TABLE +
             " WHERE " + "veiculo_id = ?" + " AND " + "area_id = ?";
 
