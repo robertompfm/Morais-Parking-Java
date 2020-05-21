@@ -273,6 +273,8 @@ public class PermissoesController implements Initializable {
         btnAdd.setDisable(true);
         proprietarioNomeAdd.setDisable(false);
         validacaoProprietarioBtnAdd.setText("Validar");
+        validacaoProprietarioBtnAdd.getStyleClass().remove("content-btn-red");
+        validacaoProprietarioBtnAdd.getStyleClass().add("content-btn");
         currProprietrioAdd = null;
         lockedAdd = true;
     }
@@ -283,6 +285,8 @@ public class PermissoesController implements Initializable {
         btnDel.setDisable(true);
         proprietarioNomeDel.setDisable(false);
         validacaoProprietarioBtnDel.setText("Validar");
+        validacaoProprietarioBtnDel.getStyleClass().remove("content-btn-red");
+        validacaoProprietarioBtnDel.getStyleClass().add("content-btn");
         currProprietrioDel = null;
         lockedDel = true;
     }
@@ -294,6 +298,8 @@ public class PermissoesController implements Initializable {
         btnAdd.setDisable(false);
         proprietarioNomeAdd.setDisable(true);
         validacaoProprietarioBtnAdd.setText("Cancelar");
+        validacaoProprietarioBtnAdd.getStyleClass().remove("content-btn");
+        validacaoProprietarioBtnAdd.getStyleClass().add("content-btn-red");
         lockedAdd = false;
     }
 
@@ -303,6 +309,8 @@ public class PermissoesController implements Initializable {
         btnDel.setDisable(false);
         proprietarioNomeDel.setDisable(true);
         validacaoProprietarioBtnDel.setText("Cancelar");
+        validacaoProprietarioBtnDel.getStyleClass().remove("content-btn");
+        validacaoProprietarioBtnDel.getStyleClass().add("content-btn-red");
         lockedDel = false;
     }
 

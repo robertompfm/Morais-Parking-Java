@@ -39,12 +39,14 @@ public final class Constants {
             " (_id INTEGER PRIMARY KEY, nome TEXT NOT NULL UNIQUE, capacidade INTEGER NOT NULL," +
             " tipo_veiculo TEXT NOT NULL, especial INTEGER NOT NULL)";
 
+
     public static final String QUERY_AREA_BY_NAME = "SELECT * FROM " + AREAS_TABLE +
             " WHERE nome = ?";
     public static final String QUERY_AREA_BY_ID = "SELECT * FROM " + AREAS_TABLE +
             " WHERE _id = ?";
     public static final String QUERY_SPECIAL_AREAS_NAME = "SELECT nome FROM " + AREAS_TABLE +
             " WHERE especial = 1";
+    public static final String QUERY_ALL_AREAS_NAME = "SELECT nome FROM " + AREAS_TABLE;
     public static final String INSERT_AREA = "INSERT INTO " + AREAS_TABLE +
             " (nome, capacidade, tipo_veiculo, especial) VALUES (?, ?, ?, ?)";
     public static final String DELETE_AREA = "DELETE FROM " + AREAS_TABLE +

@@ -23,7 +23,7 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" spacing="40.0">
@@ -43,7 +43,7 @@
             <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" spacing="40.0">
                <children>
                   <TextField fx:id="proprietarioNome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
-                  <Button fx:id="validacaoProprietarioBtn" onAction="#validateOwner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Validar">
+                  <Button fx:id="validacaoProprietarioBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#validateOwner" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Validar">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -92,7 +92,7 @@
             <HBox alignment="CENTER" layoutX="12.0" layoutY="172.0" spacing="40.0">
                <children>
                   <ComboBox fx:id="tipoComboBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
-                  <Button fx:id="addBtn" onAction="#createVehicle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Cadastrar">
+                  <Button fx:id="addBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#createVehicle" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Cadastrar">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -109,9 +109,6 @@
                </children>
             </HBox>
          </children>
-         <padding>
-            <Insets bottom="20.0" top="10.0" />
-         </padding>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
@@ -127,7 +124,7 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="80.0" spacing="40.0">
@@ -147,7 +144,7 @@
             <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" spacing="40.0">
                <children>
                   <TextField fx:id="placaFieldDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0" styleClass="content-field" />
-                  <Button fx:id="delBtn" onAction="#removeVehicle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Remover">
+                  <Button fx:id="delBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeVehicle" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Remover">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -163,9 +160,6 @@
                </children>
             </HBox>
          </children>
-         <padding>
-            <Insets bottom="20.0" top="10.0" />
-         </padding>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </VBox.margin>

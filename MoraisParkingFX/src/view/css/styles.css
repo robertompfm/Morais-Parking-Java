@@ -137,6 +137,11 @@ CONTENT
     -fx-text-fill: #ddd;
 }
 
+.content-btn-red {
+    -fx-background-color: #d20000;
+    -fx-text-fill: #ddd;
+}
+
 .content-btn:hover {
     -fx-opacity: 0.9;
 }
@@ -168,4 +173,16 @@ CONTENT
 .content-frame {
     -fx-border-color: #444;
     -fx-border-width: 2px 2px 2px 2px;
+}
+
+.reserve-area-row {
+    -fx-background-color: #ddd;
+}
+
+.reserve-area-row-field {
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-text-fill: #444;
+}
+.reserve-area-row-label {
+    -fx-text-fill: #444;
 }

@@ -233,6 +233,8 @@ public class VeiculosController implements Initializable {
         proprietarioNome.setDisable(false);
         validacaoProprietarioBtn.setText("Validar");
         dataProprietarios.setCurrentProprietario(null);
+        validacaoProprietarioBtn.getStyleClass().remove("content-btn-red");
+        validacaoProprietarioBtn.getStyleClass().add("content-btn");
         locked = true;
     }
 
@@ -245,6 +247,8 @@ public class VeiculosController implements Initializable {
         addBtn.setDisable(false);
         proprietarioNome.setDisable(true);
         validacaoProprietarioBtn.setText("Cancelar");
+        validacaoProprietarioBtn.getStyleClass().remove("content-btn");
+        validacaoProprietarioBtn.getStyleClass().add("content-btn-red");
         locked = false;
     }
 

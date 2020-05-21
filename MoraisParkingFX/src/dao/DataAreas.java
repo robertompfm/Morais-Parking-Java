@@ -22,6 +22,7 @@ public class DataAreas {
     private PreparedStatement insertAreaStatement;
     private PreparedStatement deleteAreaStatement;
     private PreparedStatement querySpecialAreasNameStatement;
+    private PreparedStatement queryAllAreasNameStatement;
 
     private AreaEstacionamento currentArea;
 
@@ -57,6 +58,7 @@ public class DataAreas {
             deleteAreaStatement = conn.prepareStatement(Constants.DELETE_AREA);
             querySpecialAreasNameStatement = conn.prepareStatement(Constants.QUERY_SPECIAL_AREAS_NAME);
             queryAreasByIdStatement = conn.prepareStatement(Constants.QUERY_AREA_BY_ID);
+            queryAllAreasNameStatement = conn.prepareStatement(Constants.QUERY_ALL_AREAS_NAME);
 
             return true;
         } catch (SQLException e) {
@@ -84,6 +86,9 @@ public class DataAreas {
             }
             if (querySpecialAreasNameStatement != null) {
                 querySpecialAreasNameStatement.close();
+            }
+            if (queryAllAreasNameStatement != null) {
+                queryAllAreasNameStatement.close();
             }
             if (conn != null) {
                 conn.close();
@@ -138,6 +143,21 @@ public class DataAreas {
     public ArrayList<String> querySpecialAreasName() {
         try {
             ResultSet results = querySpecialAreasNameStatement.executeQuery();
+            ArrayList<String> names = new ArrayList<>();
+            while (results.next()) {
+                String currName = results.getString(1);
+                names.add(currName);
+            }
+            return names;
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public ArrayList<String> queryAllAreasName() {
+        try {
+            ResultSet results = queryAllAreasNameStatement.executeQuery();
             ArrayList<String> names = new ArrayList<>();
             while (results.next()) {
                 String currName = results.getString(1);
