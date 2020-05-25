@@ -148,6 +148,7 @@ public class DataProprietarios {
 
     public boolean deleteOwner(String nome) {
         ArrayList<String> placas = queryOwnersPlatesByName(nome);
+        boolean success = true;
 
         try {
             conn.setAutoCommit(false);
@@ -158,9 +159,10 @@ public class DataProprietarios {
             }
             deleteOwnerStatement.setString(1, nome);
             deleteOwnerStatement.execute();
-            return true;
+
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
+            success = false;
             try {
                 conn.rollback();
             } catch (SQLException e2) {
@@ -171,8 +173,9 @@ public class DataProprietarios {
                 conn.setAutoCommit(true);
             } catch (SQLException e) {
                 System.out.println("Couldn't reset auto-commit. SQLException: " + e.getMessage());
+                success = false;
             }
         }
-        return false;
+        return success;
     }
 }

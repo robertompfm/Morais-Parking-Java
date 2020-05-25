@@ -12,6 +12,8 @@ public final class Constants {
     public static final String VEICULOS_TABLE = "veiculos";
     public static final String AREAS_TABLE = "areas_estacionamento";
     public static final String PERMISSOES_TABLE = "permissoes";
+    public static final String EVENTOS_TABLE = "eventos";
+    public static final String RESERVAS_TABLE = "reservas";
     public static final String ESTACIONAMENTO_TABLE = "estacionamento";
 
 
@@ -79,15 +81,11 @@ public final class Constants {
             " (_id INTEGER PRIMARY KEY, placa TEXT NOT NULL UNIQUE, proprietario_id INTEGER, " +
             " modelo TEXT, cor TEXT, tipo_veiculo TEXT NOT NULL)";
 
-//    public static final String QUERY_VEICULO_BY_PLACA = "SELECT * FROM " + VEICULOS_TABLE +
-//            " WHERE placa = ?";
     public static final String QUERY_VEICULO_BY_PLACA =  "SELECT " + VEICULOS_TABLE +
         "._id, placa, proprietario_id, nome, matricula, curso, modelo, cor, tipo_veiculo FROM " +
         VEICULOS_TABLE + " INNER JOIN " + PROPRIETARIOS_TABLE + " ON " +
         VEICULOS_TABLE + ".proprietario_id" + " = " + PROPRIETARIOS_TABLE + "._id" +
         " WHERE placa = ?";
-//    public static final String QUERY_VEICULO_BY_ID = "SELECT * FROM " + VEICULOS_TABLE +
-//            " WHERE _id = ?";
     public static final String QUERY_VEICULO_BY_ID =  "SELECT " + VEICULOS_TABLE +
             "._id, placa, proprietario_id, nome, matricula, curso, modelo, cor, tipo_veiculo FROM " +
             VEICULOS_TABLE + " INNER JOIN " + PROPRIETARIOS_TABLE + " ON " +
@@ -102,13 +100,10 @@ public final class Constants {
     public static final String DELETE_VEICULO = "DELETE FROM " + VEICULOS_TABLE +
             " WHERE placa = ?";
 
+
     // PERMISSOES
     public static final String DROP_PERMISSOES_TABLE = "DROP TABLE IF EXISTS " +
             PERMISSOES_TABLE;
-//    public static final String CREATE_PERMISSOES_TABLE = "CREATE TABLE IF NOT EXISTS " +
-//            PERMISSOES_TABLE +
-//            " (_id INTEGER PRIMARY KEY, proprietario_id INTEGER NOT NULL, proprietario TEXT NOT NULL, " +
-//            " veiculo_id INTEGER NOT NULL, placa TEXT NOT NULL, area_id INTEGER NOT NULL, area TEXT NOT NULL)";
     public static final String CREATE_PERMISSOES_TABLE = "CREATE TABLE IF NOT EXISTS " +
             PERMISSOES_TABLE +
             " (_id INTEGER PRIMARY KEY, veiculo_id INTEGER NOT NULL, area_id INTEGER NOT NULL)";
@@ -117,13 +112,45 @@ public final class Constants {
             " WHERE " + "veiculo_id = ?" + " AND " + "area_id = ?";
     public static final  String QUERY_PERMISSOES_BY_VEICULO_ID = "SELECT * FROM " + PERMISSOES_TABLE +
             " WHERE " + "veiculo_id = ?";
-//    public static final String INSERT_PERMISSAO = "INSERT INTO " + PERMISSOES_TABLE +
-//            " (proprietario_id, proprietario, veiculo_id, placa, area_id, area)" +
-//            " VALUES (?, ?, ?, ?, ?, ?)";
     public static final String INSERT_PERMISSAO = "INSERT INTO " + PERMISSOES_TABLE +
             " (veiculo_id, area_id)" +
             " VALUES (?, ?)";
     public static final String DELETE_PERMISSAO = "DELETE FROM " + PERMISSOES_TABLE +
             " WHERE " + "veiculo_id = ?" + " AND " + "area_id = ?";
+
+
+    // EVENTOS E RESERVAS
+    public static final String CREATE_EVENTOS_TABLE = "CREATE TABLE IF NOT EXISTS " +
+            EVENTOS_TABLE +
+            " (_id INTEGER PRIMARY KEY, nome TEXT NOT NULL UNIQUE," +
+            " inicio TEXT NOT NULL UNIQUE, fim TEXT NOT NULL UNIQUE)";
+    public static final String CREATE_RESERVAS_TABLE = "CREATE TABLE IF NOT EXISTS " +
+            RESERVAS_TABLE +
+            " (_id INTEGER PRIMARY KEY, evento_id INTEGER NOT NULL," +
+            " area_id INTEGER NOT NULL, vagas INTEGER NOT NULL)";
+    public static final String DROP_EVENTOS_TABLE = "DROP TABLE IF EXISTS " +
+            EVENTOS_TABLE;
+    public static final String DROP_RESERVAS_TABLE = "DROP TABLE IF EXISTS " +
+            RESERVAS_TABLE;
+
+    public static final String QUERY_EVENTO_BY_NAME = "SELECT * FROM " + EVENTOS_TABLE +
+            " WHERE " + "nome = ?";
+    public static final String QUERY_EVENTO_BY_ID = "SELECT * FROM " + EVENTOS_TABLE +
+            " WHERE " + "_id = ?";
+    public static final String QUERY_RESERVAS = "SELECT * FROM " + RESERVAS_TABLE +
+            " WHERE " + "evento_id = ?";
+
+    public static final String INSERT_EVENTO = "INSERT INTO " + EVENTOS_TABLE +
+            " (nome, inicio, fim)" +
+            " VALUES (?, ?, ?)";
+    public static final String INSERT_RESERVA = "INSERT INTO " + RESERVAS_TABLE +
+            " (evento_id, area_id, vagas)" +
+            " VALUES (?, ?, ?)";
+
+    public static final String DELETE_EVENTO = "DELETE FROM " + EVENTOS_TABLE +
+            " WHERE " + "nome = ?";
+    public static final String DELETE_RESERVAS = "DELETE FROM " + RESERVAS_TABLE +
+            " WHERE " + "evento_id = ?";
+
 
 }

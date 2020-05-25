@@ -11,11 +11,13 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import model.AreaEstacionamento;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -49,11 +51,29 @@ public class EventosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         populateScreen();
+        warningLabelAdd.setText("");
+        warningLabelAdd.setTextFill(Color.RED);
+        warningLabelDel.setText("");
+        warningLabelDel.setTextFill(Color.RED);
+
     }
 
     @FXML
     public void addEvent(ActionEvent event) {
+        String nome = nomeFieldAdd.getText();
+        LocalDate inicio = inicioDate.getValue();
+        LocalDate fim = fimDate.getValue();
+        if (!validateNameAdd(nome)) {
+            return;
+        }
+        if (!validateStartDate(inicio)) {
+            return;
+        }
+        if (!validateEndDate(fim)) {
+            return;
+        }
         for (Node node : areasVBox.getChildren()) {
             HBox currHBox = (HBox) node;
             System.out.println(1);
@@ -66,6 +86,47 @@ public class EventosController implements Initializable {
         }
         clearFieldsAdd();
     }
+
+
+    // VALIDATION METHODS
+    private boolean validateNameAdd(String name) {
+        if (name.equals("")) {
+            warningLabelAdd.setTextFill(Color.RED);
+            warningLabelAdd.setText("Você precisa preencher o campo 'Nome'");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateStartDate(LocalDate date) {
+        if (date == null) {
+            warningLabelAdd.setTextFill(Color.RED);
+            warningLabelAdd.setText("Você precisa escolher uma data de inicio");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateEndDate(LocalDate date) {
+        if (date == null) {
+            warningLabelAdd.setTextFill(Color.RED);
+            warningLabelAdd.setText("Você precisa escolher uma data de encerramento");
+            return false;
+        }
+        return true;
+    }
+
+
+
+    private boolean validateNameDel(String name) {
+        if (name.equals("")) {
+            warningLabelDel.setTextFill(Color.RED);
+            warningLabelDel.setText("Você precisa preencher o campo 'Nome'");
+            return false;
+        }
+        return true;
+    }
+
 
     // POPULATE SCREEN
     private void populateScreen() {

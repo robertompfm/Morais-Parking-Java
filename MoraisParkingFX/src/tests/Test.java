@@ -3,7 +3,9 @@ package tests;
 import dao.*;
 import model.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Test {
     private static void testUsuarios() {
@@ -153,11 +155,35 @@ public class Test {
 
     }
 
+    public static void testEventos() {
+        Evento inova = new Evento("INOVA", LocalDate.parse("2020-08-10"), LocalDate.parse("2020-08-15"));
+
+        AreaEstacionamento carros = new AreaEstacionamento(1, "Carros", 10,
+                TipoVeiculo.CARRO, false);
+        AreaEstacionamento onibus = new AreaEstacionamento(2, "Onibus", 5,
+                TipoVeiculo.ONIBUS, false);
+        HashMap<AreaEstacionamento, Integer> reservas = new HashMap<>();
+        reservas.put(carros, 3);
+        reservas.put(onibus, 2);
+
+        System.out.println(inova);
+
+        DataEventos instance = DataEventos.getInstance();
+
+        instance.open();
+        instance.insertEvent(inova.getNome(), inova.getInicio(), inova.getFim());
+        System.out.println(instance.queryEventWithoutDatesByName("INOVA"));
+        System.out.println(instance.queryEventWithoutDatesById(1));
+        instance.close();
+    }
+
     public static void main(String[] args) {
 //        testUsuarios();
 //        testAreas();
 //        testProprietarios();
 //        testVeiculos();
-        testPermissoes();
+//        testPermissoes();
+        testEventos();
     }
+
 }
