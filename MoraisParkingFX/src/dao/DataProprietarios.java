@@ -159,6 +159,7 @@ public class DataProprietarios {
             }
             deleteOwnerStatement.setString(1, nome);
             deleteOwnerStatement.execute();
+            conn.commit();
 
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());

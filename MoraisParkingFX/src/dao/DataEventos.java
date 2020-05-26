@@ -63,8 +63,8 @@ public class DataEventos {
             dropReservasTable = conn.prepareStatement(Constants.DROP_RESERVAS_TABLE);
             createReservasTable = conn.prepareStatement(Constants.CREATE_RESERVAS_TABLE);
 
-            dropEventosTable.execute();
-            dropReservasTable.execute();
+//            dropEventosTable.execute();
+//            dropReservasTable.execute();
             createEventosTable.execute();
             createReservasTable.execute();
 
@@ -141,7 +141,32 @@ public class DataEventos {
 //        );
 //    }
 
-    //INSERT METHODS
+    // CREATE EVENT
+    public boolean createEvent(Evento evento) {
+        return createEvent(evento.getNome(), evento.getInicio(), evento.getFim(), evento.getVagasReservadas());
+    }
+
+    public boolean createEvent(String nome, LocalDate inicio, LocalDate fim,
+                               HashMap<AreaEstacionamento, Integer> reservas) {
+        if (!insertEvent(nome, inicio, fim)) {
+            return false;
+        };
+        Evento queriedEvent = queryEventWithoutDatesByName(nome);
+        if (queriedEvent == null) {
+            deleteEvent(nome);
+            return false;
+        };
+        if (!insertReserves(queriedEvent.getId(), reservas)) {
+            deleteReserves(queriedEvent.getId());
+            deleteEvent(nome);
+            return false;
+        }
+        return true;
+
+    }
+
+
+    // INSERT METHODS
     public boolean insertEvent(String nome, LocalDate inicio, LocalDate fim) {
 
         try {
@@ -162,13 +187,13 @@ public class DataEventos {
         boolean success = true;
         try {
             conn.setAutoCommit(false);
-
             for (Map.Entry<AreaEstacionamento, Integer> entry : reservas.entrySet()) {
                 insertReserveStatement.setInt(1, eventoId);
                 insertReserveStatement.setInt(2, entry.getKey().getId());
                 insertReserveStatement.setInt(3, entry.getValue());
                 insertReserveStatement.execute();
             }
+            conn.commit();
 
         } catch (SQLException e) {
             success = false;
@@ -190,6 +215,7 @@ public class DataEventos {
 
     }
 
+    // QUERY METHODS
     public Evento queryEventWithoutDatesByName(String nome) {
         try {
             queryEventByNameStatement.setString(1, nome);
@@ -234,5 +260,75 @@ public class DataEventos {
         }
     }
 
+    public HashMap<Integer, Integer> queryReservesByEventId(int eventId) {
+        try {
+            queryReservesStatement.setInt(1, eventId);
+            ResultSet results = queryReservesStatement.executeQuery();
+            HashMap<Integer, Integer> reservas = new HashMap<>();
+            while (results.next()) {
+                reservas.put(results.getInt(3), results.getInt(4));
+            }
+            return reservas;
+
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+    }
+
+
+    // DELETE METHODS
+    public boolean deleteEventAndReserves(Evento evento) {
+        boolean success = true;
+        try {
+            conn.setAutoCommit(false);
+            deleteEventStatement.setString(1, evento.getNome());
+            deleteEventStatement.execute();
+            deleteReservesStatement.setInt(1, evento.getId());
+            deleteReservesStatement.execute();
+            conn.commit();
+
+        } catch (SQLException e) {
+            success = false;
+            System.out.println("SQLException: " + e.getMessage());
+            try {
+                conn.rollback();
+            } catch (SQLException e2) {
+                System.out.println("Couldn't rollback. SQLException: " + e2.getMessage());
+            }
+        } finally {
+            try {
+                conn.setAutoCommit(true);
+            } catch (SQLException e) {
+                System.out.println("Couldn't reset auto-commit. SQLException: " + e.getMessage());
+                success = false;
+            }
+        }
+        return success;
+    }
+
+    public boolean deleteEvent(String nome) {
+        try {
+            deleteEventStatement.setString(1, nome);
+            deleteEventStatement.execute();
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean deleteReserves(int eventoId) {
+        try {
+            deleteReservesStatement.setInt(1, eventoId);
+            deleteReservesStatement.execute();
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return false;
+        }
+    }
 
 }

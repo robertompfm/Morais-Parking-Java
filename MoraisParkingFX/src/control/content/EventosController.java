@@ -1,6 +1,7 @@
 package control.content;
 
 import dao.DataAreas;
+import dao.DataEventos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,12 +14,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import model.AreaEstacionamento;
+import model.Evento;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class EventosController implements Initializable {
@@ -46,12 +49,14 @@ public class EventosController implements Initializable {
     private VBox areasVBox;
 
     private DataAreas dataAreas;
+    private DataEventos dataEventos;
 //    private ArrayList<HBox> areaHBoxes;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        dataAreas = DataAreas.getInstance();
+        dataEventos = DataEventos.getInstance();
         populateScreen();
         warningLabelAdd.setText("");
         warningLabelAdd.setTextFill(Color.RED);
@@ -60,6 +65,7 @@ public class EventosController implements Initializable {
 
     }
 
+    // BUTTON ACTION METHODS
     @FXML
     public void addEvent(ActionEvent event) {
         String nome = nomeFieldAdd.getText();
@@ -74,17 +80,63 @@ public class EventosController implements Initializable {
         if (!validateEndDate(fim)) {
             return;
         }
+        HashMap<AreaEstacionamento, Integer> reservas = new HashMap<>();
         for (Node node : areasVBox.getChildren()) {
             HBox currHBox = (HBox) node;
-            System.out.println(1);
             String areaStr = ((Label) currHBox.getChildren().get(0)).getText();
-            System.out.println(2 + ": " + areaStr);
+            dataAreas.open();
+            AreaEstacionamento currArea = dataAreas.queryAreaByName(areaStr);
+            dataAreas.close();
             String reservaStr = ((TextField) currHBox.getChildren().get(1)).getText();
-            System.out.println(3 + ": " + reservaStr);
-            String capacidadeStr = ((Label) currHBox.getChildren().get(2)).getText();
-            System.out.println(4 + ": " + capacidadeStr);
+            if (!validateReserva(currArea, reservaStr)) {
+                return;
+            }
+            int currReserva = Integer.parseInt(reservaStr);
+            reservas.put(currArea, currReserva);
         }
-        clearFieldsAdd();
+        Evento newEvent = new Evento(nome, inicio, fim);
+        newEvent.setVagasReservadas(reservas);
+        dataEventos.open();
+        if (!dataEventos.createEvent(newEvent)) {
+            warningLabelAdd.setTextFill(Color.RED);
+            warningLabelAdd.setText("Não foi possível criar o evento. Talvez ja tenha sido cadastrado um evento com mesmo nome.");
+        } else {
+            warningLabelAdd.setTextFill(Color.GREEN);
+            warningLabelAdd.setText("Evento cadastrado com sucesso!");
+            clearFieldsAdd();
+        };
+        dataEventos.close();
+
+    }
+
+
+    @FXML
+    public void delEvent(ActionEvent event) {
+        String nome = nomeFieldDel.getText();
+        if (!validateNameDel(nome)) {
+            return;
+        }
+        dataEventos.open();
+        Evento currEvento = dataEventos.queryEventWithoutDatesByName(nome);
+        if (currEvento == null) {
+            warningLabelDel.setTextFill(Color.RED);
+            warningLabelDel.setText("Evento não encontrado");
+            dataEventos.close();
+            return;
+        }
+        if (dataEventos.deleteEventAndReserves(currEvento)) {
+            warningLabelDel.setTextFill(Color.GREEN);
+            warningLabelDel.setText("Evento cancelado!");
+            clearFieldsDel();
+
+        } else {
+            warningLabelDel.setTextFill(Color.RED);
+            warningLabelDel.setText("Não possível cancelar o evento");
+
+        }
+
+        dataEventos.close();
+
     }
 
 
@@ -116,6 +168,32 @@ public class EventosController implements Initializable {
         return true;
     }
 
+    private boolean validateReserva(AreaEstacionamento area, String resevaStr) {
+        if (area == null) {
+            warningLabelAdd.setTextFill(Color.RED);
+            warningLabelAdd.setText("Algo deu errado. Tente novamente");
+            return false;
+        }
+        try {
+            int num = Integer.parseInt(resevaStr);
+            if (num > area.getCapacidade()) {
+                warningLabelAdd.setTextFill(Color.RED);
+                warningLabelAdd.setText("As vagas reservadas não podem ser maiores que a capacidade das áreas");
+                return false;
+            }
+            if (num < 0) {
+                warningLabelAdd.setTextFill(Color.RED);
+                warningLabelAdd.setText("As vagas reservadas não podem ser menores que zero");
+                return false;
+            }
+        } catch (NumberFormatException nfe) {
+            warningLabelAdd.setTextFill(Color.RED);
+            warningLabelAdd.setText("Você deve inserir valores numéricos inteiros válidos nos campos de 'Reserva'");
+            return false;
+        }
+        return true;
+    }
+
 
 
     private boolean validateNameDel(String name) {
@@ -131,12 +209,11 @@ public class EventosController implements Initializable {
     // POPULATE SCREEN
     private void populateScreen() {
         try {
-            dataAreas = DataAreas.getInstance();
+
             dataAreas.open();
             ArrayList<String> areasNames = dataAreas.queryAllAreasName();
             dataAreas.close();
             ArrayList<AreaEstacionamento> areas = new ArrayList<>();
-            System.out.println(areasNames);
             for (String areaName : areasNames) {
                 dataAreas.open();
                 AreaEstacionamento area = dataAreas.queryAreaByName(areaName);
@@ -160,9 +237,14 @@ public class EventosController implements Initializable {
         nomeFieldAdd.clear();
         inicioDate.getEditor().clear();
         fimDate.getEditor().clear();
+        warningLabelAdd.setText("");
         for (Node node : areasVBox.getChildren()) {
             HBox currHBox = (HBox) node;
             ((TextField) currHBox.getChildren().get(1)).setText("0");
         }
+    }
+
+    private void clearFieldsDel() {
+        nomeFieldDel.clear();
     }
 }
