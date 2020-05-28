@@ -7,10 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Usuario;
 import dao.DataUsuarios;
@@ -30,13 +28,18 @@ public class LoginController implements Initializable {
     @FXML
     private Button loginButton;
 
+    @FXML
+    private Label warningLabel;
+
     private Alert loginFailed;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loginFailed = new Alert(Alert.AlertType.ERROR);
-        loginFailed.setTitle("Login failed");
-        loginFailed.setHeaderText("Não foi possível realizar o login:");
+//        loginFailed = new Alert(Alert.AlertType.ERROR);
+//        loginFailed.setTitle("Login failed");
+//        loginFailed.setHeaderText("Não foi possível realizar o login:");
+        warningLabel.setTextFill(Color.RED);
+        warningLabel.setText("");
     }
 
     @FXML
@@ -45,11 +48,15 @@ public class LoginController implements Initializable {
         dataUsuarios.open();
         Usuario usuario = dataUsuarios.queryUsuarioByEmail(username.getText());
         if (usuario == null) {
-            loginFailed.setContentText("Usuário não encontrado");
-            loginFailed.show();
+            warningLabel.setTextFill(Color.RED);
+            warningLabel.setText("Usuário não encontrado");
+//            loginFailed.setContentText("Usuário não encontrado");
+//            loginFailed.show();
         } else if (!usuario.getPassword().equals(password.getText())) {
-            loginFailed.setContentText("Usuário ou senha incorretos");
-            loginFailed.show();
+            warningLabel.setTextFill(Color.RED);
+            warningLabel.setText("Usuário ou senha incorretos");
+//            loginFailed.setContentText("Usuário ou senha incorretos");
+//            loginFailed.show();
         } else {
             dataUsuarios.setCurrentUser(usuario);
             ((Node)(event.getSource())).getScene().getWindow().hide();
@@ -58,6 +65,7 @@ public class LoginController implements Initializable {
             primaryStage.setTitle("MoraisParking");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
+            warningLabel.setText("");
         }
         dataUsuarios.close();
     }

@@ -70,6 +70,11 @@
                   </Button>
                </children>
             </HBox>
+            <Label fx:id="warningLabel" layoutX="177.0" layoutY="140.0" styleClass="login-title" text="Nao foi possivel realizar o login">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </children>

@@ -148,10 +148,14 @@ public class DataEventos {
 
     public boolean createEvent(String nome, LocalDate inicio, LocalDate fim,
                                HashMap<AreaEstacionamento, Integer> reservas) {
+        Evento queriedEvent = queryEventWithoutDatesByName(nome);
+        if (queriedEvent != null) {
+            return false;
+        };
         if (!insertEvent(nome, inicio, fim)) {
             return false;
         };
-        Evento queriedEvent = queryEventWithoutDatesByName(nome);
+        queriedEvent = queryEventWithoutDatesByName(nome);
         if (queriedEvent == null) {
             deleteEvent(nome);
             return false;

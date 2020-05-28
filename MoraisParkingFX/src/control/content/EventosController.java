@@ -74,10 +74,7 @@ public class EventosController implements Initializable {
         if (!validateNameAdd(nome)) {
             return;
         }
-        if (!validateStartDate(inicio)) {
-            return;
-        }
-        if (!validateEndDate(fim)) {
+        if (!validateDates(inicio, fim)) {
             return;
         }
         HashMap<AreaEstacionamento, Integer> reservas = new HashMap<>();
@@ -101,6 +98,7 @@ public class EventosController implements Initializable {
             warningLabelAdd.setTextFill(Color.RED);
             warningLabelAdd.setText("Não foi possível criar o evento. Talvez ja tenha sido cadastrado um evento com mesmo nome.");
         } else {
+            System.out.println("OK");
             warningLabelAdd.setTextFill(Color.GREEN);
             warningLabelAdd.setText("Evento cadastrado com sucesso!");
             clearFieldsAdd();
@@ -150,19 +148,26 @@ public class EventosController implements Initializable {
         return true;
     }
 
-    private boolean validateStartDate(LocalDate date) {
-        if (date == null) {
+
+    private boolean validateDates(LocalDate inicio, LocalDate fim) {
+        if (inicio == null) {
             warningLabelAdd.setTextFill(Color.RED);
             warningLabelAdd.setText("Você precisa escolher uma data de inicio");
             return false;
         }
-        return true;
-    }
-
-    private boolean validateEndDate(LocalDate date) {
-        if (date == null) {
+        if (fim == null) {
             warningLabelAdd.setTextFill(Color.RED);
             warningLabelAdd.setText("Você precisa escolher uma data de encerramento");
+            return false;
+        }
+        if (inicio.compareTo(LocalDate.now()) <= 0) {
+            warningLabelAdd.setTextFill(Color.RED);
+            warningLabelAdd.setText("A data de inicio deve ser uma data futura");
+            return false;
+        }
+        if (inicio.compareTo(fim) > 0) {
+            warningLabelAdd.setTextFill(Color.RED);
+            warningLabelAdd.setText("A data de inicio nao pode ser apos a data do fim");
             return false;
         }
         return true;
@@ -237,7 +242,6 @@ public class EventosController implements Initializable {
         nomeFieldAdd.clear();
         inicioDate.getEditor().clear();
         fimDate.getEditor().clear();
-        warningLabelAdd.setText("");
         for (Node node : areasVBox.getChildren()) {
             HBox currHBox = (HBox) node;
             ((TextField) currHBox.getChildren().get(1)).setText("0");
