@@ -107,7 +107,7 @@
             <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" spacing="40.0">
                <children>
                   <TextField fx:id="placaFieldDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0" styleClass="content-field" />
-                  <Button fx:id="buttonDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Autorizar">
+                  <Button fx:id="buttonDel" onAction="#letExit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Autorizar">
                      <font>
                         <Font size="16.0" />
                      </font>

@@ -5,7 +5,7 @@ import model.Usuario;
 
 import java.sql.*;
 
-public class DataUsuarios {
+public class DataUsuarios implements DataClass {
 
     private static Connection conn;
 
@@ -36,6 +36,7 @@ public class DataUsuarios {
         this.currentUser = currentUser;
     }
 
+    @Override
     public boolean open() {
         try {
             conn = DriverManager.getConnection(Constants.CONECTION_STR);
@@ -59,6 +60,7 @@ public class DataUsuarios {
         }
     }
 
+    @Override
     public void close() {
         try {
             if (dropUsuariosTable != null) {

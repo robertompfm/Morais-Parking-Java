@@ -4,7 +4,7 @@ import model.*;
 
 import java.sql.*;
 
-public class DataPermissoes {
+public class DataPermissoes implements DataClass {
     private static Connection conn;
 
     private static DataPermissoes instance = new DataPermissoes();
@@ -38,6 +38,7 @@ public class DataPermissoes {
         this.currentPermissao = currentPermissao;
     }
 
+    @Override
     public boolean open() {
         try {
             conn = DriverManager.getConnection(Constants.CONECTION_STR);
@@ -65,6 +66,7 @@ public class DataPermissoes {
         }
     }
 
+    @Override
     public void close() {
         try {
             if (dropPermissionsTable != null) {

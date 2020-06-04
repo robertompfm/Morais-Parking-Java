@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataEventos {
+public class DataEventos implements DataClass {
 
     // ATTRIBUTES
     private static Connection conn;
@@ -55,6 +55,7 @@ public class DataEventos {
 
 
     // OPEN METHOD
+    @Override
     public boolean open() {
         try {
             conn = DriverManager.getConnection(Constants.CONECTION_STR);
@@ -91,6 +92,7 @@ public class DataEventos {
 
 
     // CLOSE METHOD
+    @Override
     public void close() {
         try {
             if (dropEventosTable != null) {

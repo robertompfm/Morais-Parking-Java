@@ -117,33 +117,27 @@ public class AcessoController implements Initializable {
         dataAreas.open();
         AreaEstacionamento areaComum = dataAreas.queryCommonAreaByTipo(veiculo.getTipoVeiculo());
         dataAreas.close();
-        System.out.println(areaEspecial);
-        System.out.println(areaComum);
 
         // TRY TO PARK IN SPECIAL AREA IF HAS PERMISSION
         boolean success = false;
         if (areaEspecial != null) {
             int ocupacao = getOccupation(areaEspecial);
-            System.out.println(ocupacao);
             // CHECK IF THERE IS EMPTY SPOT
             if (ocupacao < areaEspecial.getCapacidade()) {
-//                dataEstacionamento.open();
-//                success = dataEstacionamento.insertVehicle(veiculo, areaEspecial);
-//                dataEstacionamento.close();
-                System.out.println("OK area especial");
+                dataEstacionamento.open();
+                success = dataEstacionamento.insertVehicle(veiculo, areaEspecial);
+                dataEstacionamento.close();
             }
         }
 
         // TRY TO PARK IN COMMON AREA
         if (!success) {
             int ocupacao = getOccupation(areaComum);
-            System.out.println(ocupacao);
             // CHECK IF THERE IS EMPTY SPOT
             if (ocupacao < areaComum.getCapacidade()) {
-//                dataEstacionamento.open();
-//                success = dataEstacionamento.insertVehicle(veiculo, areaComum);
-//                dataEstacionamento.close();
-                System.out.println("OK area comum");
+                dataEstacionamento.open();
+                success = dataEstacionamento.insertVehicle(veiculo, areaComum);
+                dataEstacionamento.close();
             }
         }
         // SHOW FEEDBACK
@@ -156,45 +150,44 @@ public class AcessoController implements Initializable {
             warningLabelAdd.setText("Não foi possível autorizar a entrada");
         }
     }
-//
-//    @FXML
-//    public void removeArea(ActionEvent event) throws IOException {
-//        String nome = nomeFieldDel.getText();
-//        if (!validateNameDel(nome)) {
-//            return;
-//        }
-//        dataAreas.open();
-//        AreaEstacionamento area = dataAreas.queryAreaByName(nome);
-//        if (area == null) {
-//            warningLabelDel.setTextFill(Color.RED);
-//            warningLabelDel.setText("Não foi possível encontrar a área especial inserida");
-//        } else if (!area.isEspecial()) {
-//            warningLabelDel.setTextFill(Color.RED);
-//            warningLabelDel.setText("Não é possível remover uma área comum");
-//        } else {
-//            confirmationDialog.setContentText(
-//                    "Área: " + area.getNome() +
-//                            "\nCapacidade: " + area.getCapacidade() +
-//                            "\nTipo de veículo: " + area.getTipoVeiculo()
-//            );
-//            if (confirmationDialog.showAndWait().get() == ButtonType.OK) {
-//                if (dataAreas.deleteAreaByName(nome)) {
-//                    warningLabelDel.setTextFill(Color.GREEN);
-//                    warningLabelDel.setText("Área removida com sucesso!");
-//                    clearRemoveAreaFields();
-//                } else {
-//                    warningLabelDel.setTextFill(Color.RED);
-//                    warningLabelDel.setText("Não foi possível remover a usuário área");
-//                }
-//            } else {
-//                warningLabelDel.setTextFill(Color.RED);
-//                warningLabelDel.setText("Operação abortada. A área não foi removido");
-//            }
-//        }
-//        dataAreas.close();
-//    }
-//
-//
+
+    @FXML
+    public void letExit(ActionEvent event) throws IOException {
+        // VALIDATION
+        String placa = placaFieldDel.getText();
+        if (!validatePlacaDel(placa)) {
+            return;
+        }
+        // CHECK IF VEHICLE IS  PARKED
+        dataEstacionamento.open();
+        boolean isParked = dataEstacionamento.isParked(placa);
+        dataEstacionamento.close();
+
+        if (!isParked) {
+            warningLabelDel.setTextFill(Color.RED);
+            warningLabelDel.setText("Não há veículo com essa placa dentro do estacionamento");
+            return;
+        }
+
+        // TRY TO PERMIT THE EXIT
+        boolean success;
+        dataEstacionamento.open();
+        success = dataEstacionamento.deleteVehicle(placa);
+        dataEstacionamento.close();
+
+        // SHOW FEEDBACK
+        if (success) {
+            warningLabelDel.setTextFill(Color.GREEN);
+            warningLabelDel.setText("Saída autorizada!");
+            clearFieldsAdd();
+        } else {
+            warningLabelDel.setTextFill(Color.RED);
+            warningLabelDel.setText("Não foi possível autorizar a saída");
+        }
+
+    }
+
+
     // VALIDATION METHODS
     private boolean validatePlacaAdd(String placa) {
         if (placa.equals("")) {
@@ -278,7 +271,7 @@ public class AcessoController implements Initializable {
             if (eventoDoDia != null) {
                 dataEventos.open();
                 ocupacao += dataEventos.queryReservedSpots(eventoDoDia.getId(), currArea.getId());
-//              dataEventos.close();
+                dataEventos.close();
             }
             ocupacoes.put(currArea, ocupacao);
             return ocupacao;
@@ -289,19 +282,16 @@ public class AcessoController implements Initializable {
     public HashMap<AreaEstacionamento, Integer> getOccupations() {
         dataAreas.open();
         ArrayList<AreaEstacionamento> areas = dataAreas.queryAllAreas();
-//        System.out.println(areas.size());
         dataAreas.close();
         HashMap<AreaEstacionamento, Integer> ocupacoes = new HashMap<>();
         for (AreaEstacionamento area : areas) {
             int ocupacao;
             dataEstacionamento.open();
             ocupacao = dataEstacionamento.queryVehiclesByArea(area).size();
-//            System.out.println(ocupacao);
             dataEstacionamento.close();
             if (eventoDoDia != null) {
                 dataEventos.open();
                 ocupacao += dataEventos.queryReservedSpots(eventoDoDia.getId(), area.getId());
-//                System.out.println(ocupacao);
                 dataEventos.close();
             }
             ocupacoes.put(area, ocupacao);

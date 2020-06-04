@@ -6,7 +6,7 @@ import model.Veiculo;
 
 import java.sql.*;
 
-public class DataCadastro {
+public class DataCadastro implements DataClass {
 
     private static Connection conn;
 
@@ -43,6 +43,7 @@ public class DataCadastro {
         return instance;
     }
 
+    @Override
     public boolean open() {
         try {
             conn = DriverManager.getConnection(Constants.CONECTION_STR);
@@ -83,6 +84,7 @@ public class DataCadastro {
         }
     }
 
+    @Override
     public void close() {
         try {
             if (dropPropTable != null) {

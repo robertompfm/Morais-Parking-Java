@@ -8,7 +8,7 @@ import model.Usuario;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DataAreas {
+public class DataAreas implements DataClass {
 
     private static Connection conn;
 
@@ -45,6 +45,7 @@ public class DataAreas {
         this.currentArea = currentArea;
     }
 
+    @Override
     public boolean open() {
         try {
             conn = DriverManager.getConnection(Constants.CONECTION_STR);
@@ -73,6 +74,7 @@ public class DataAreas {
         }
     }
 
+    @Override
     public void close() {
         try {
             if (dropAreasTable != null) {

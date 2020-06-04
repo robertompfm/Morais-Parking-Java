@@ -5,7 +5,7 @@ import model.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DataEstacionamento {
+public class DataEstacionamento implements DataClass {
     private static Connection conn;
 
     private static DataEstacionamento instance = new DataEstacionamento();
@@ -25,13 +25,13 @@ public class DataEstacionamento {
         return instance;
     }
 
-
+    @Override
     public boolean open() {
         try {
             conn = DriverManager.getConnection(Constants.CONECTION_STR);
             dropEstacionamentoTable = conn.prepareStatement(Constants.DROP_ESTACIONAMENTO_TABLE);
             createEstacionamentoTable = conn.prepareStatement(Constants.CREATE_ESTACIONAMENTO_TABLE);
-            dropEstacionamentoTable.execute();
+//            dropEstacionamentoTable.execute();
             createEstacionamentoTable.execute();
 
             insertVehicleStatement = conn.prepareStatement(Constants.INSERT_VEICULO_IN_ESTACIONAMENTO);
@@ -46,6 +46,7 @@ public class DataEstacionamento {
         }
     }
 
+    @Override
     public void close() {
         try {
             if (dropEstacionamentoTable != null) {

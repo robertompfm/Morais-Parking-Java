@@ -6,7 +6,7 @@ import model.Veiculo;
 
 import java.sql.*;
 
-public class DataVeiculos {
+public class DataVeiculos implements DataClass {
     private static Connection conn;
 
     private static DataVeiculos instance = new DataVeiculos();
@@ -39,6 +39,7 @@ public class DataVeiculos {
         this.currentVeiculo = currentVeiculo;
     }
 
+    @Override
     public boolean open() {
         try {
             conn = DriverManager.getConnection(Constants.CONECTION_STR);
@@ -64,6 +65,7 @@ public class DataVeiculos {
         }
     }
 
+    @Override
     public void close() {
         try {
             if (dropVehicleTable != null) {

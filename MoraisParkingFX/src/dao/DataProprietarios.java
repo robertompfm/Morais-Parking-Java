@@ -5,7 +5,7 @@ import model.Proprietario;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DataProprietarios {
+public class DataProprietarios implements DataClass {
     private static Connection conn;
 
     private static DataProprietarios instance = new DataProprietarios();
@@ -39,6 +39,7 @@ public class DataProprietarios {
         this.currentProprietario = currentProprietario;
     }
 
+    @Override
     public boolean open() {
         try {
             conn = DriverManager.getConnection(Constants.CONECTION_STR);
@@ -65,6 +66,7 @@ public class DataProprietarios {
         }
     }
 
+    @Override
     public void close() {
         try {
             if (dropOwnersTable != null) {
