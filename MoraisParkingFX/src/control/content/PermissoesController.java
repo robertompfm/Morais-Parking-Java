@@ -126,7 +126,6 @@ public class PermissoesController implements Initializable {
         dataProprietarios.open();
         currProprietrioDel = dataProprietarios.queryOwnerByName(nome);
         dataProprietarios.close();
-        System.out.println(currProprietrioDel);
         if (lockedDel && currProprietrioDel != null) {
             enableFieldsDel();
             populatePlacasDel();
@@ -139,6 +138,30 @@ public class PermissoesController implements Initializable {
             disableFieldsDel();
             warningLabelDel.setText("");
         }
+    }
+
+    @FXML
+    public void plateSelectedAdd(ActionEvent event) {;
+        String placa = placaComboBoxAdd.getValue();
+        if (placa == null) {
+            return;
+        }
+        dataVeiculos.open();
+        Veiculo currVeiculo = dataVeiculos.queryVehicleByPlate(placa);
+        dataVeiculos.close();
+        populateAreasAdd(currVeiculo.getTipoVeiculo());
+    }
+
+    @FXML
+    public void plateSelectedDel(ActionEvent event) {;
+        String placa = placaComboBoxDel.getValue();
+        if (placa == null) {
+            return;
+        }
+        dataVeiculos.open();
+        Veiculo currVeiculo = dataVeiculos.queryVehicleByPlate(placa);
+        dataVeiculos.close();
+        populateAreasAdd(currVeiculo.getTipoVeiculo());
     }
 
     @FXML
@@ -330,6 +353,13 @@ public class PermissoesController implements Initializable {
         areaComboBoxAdd.getItems().setAll(areas);
     }
 
+    private void populateAreasAdd(TipoVeiculo tipo) {
+        dataAreas.open();
+        ArrayList<String> areas = dataAreas.queryCompatibleSpecialAreasName(tipo);
+        dataAreas.close();
+        areaComboBoxAdd.getItems().setAll(areas);
+    }
+
     private void populatePlacasDel() {
         dataProprietarios.open();
         ArrayList<String> placas = dataProprietarios.queryOwnersPlatesByName(currProprietrioDel.getNome());
@@ -340,6 +370,13 @@ public class PermissoesController implements Initializable {
     private void populateAreasDel() {
         dataAreas.open();
         ArrayList<String> areas = dataAreas.querySpecialAreasName();
+        dataAreas.close();
+        areaComboBoxDel.getItems().setAll(areas);
+    }
+
+    private void populateAreasDel(TipoVeiculo tipo) {
+        dataAreas.open();
+        ArrayList<String> areas = dataAreas.queryCompatibleSpecialAreasName(tipo);
         dataAreas.close();
         areaComboBoxDel.getItems().setAll(areas);
     }

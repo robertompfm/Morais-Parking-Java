@@ -146,9 +146,9 @@ public class Test {
         instance.insertPermission(permissao02);
         instance.insertPermission(permissao03);
 
-        instance.deletePermission(1, 4);
-        instance.deletePermission(2, 4);
-        instance.deletePermission(3, 4);
+//        instance.deletePermission(1, 4);
+//        instance.deletePermission(2, 4);
+//        instance.deletePermission(3, 4);
 //        System.out.println(instance.queryPermission(3, 4));
 //        System.out.println(instance.hasPermission(3, 4));
 //        System.out.println(instance.hasPermission(1, 6));
@@ -187,13 +187,49 @@ public class Test {
         instance.close();
     }
 
+    public static void testEstacionamento() {
+        DataEstacionamento instance = DataEstacionamento.getInstance();
+
+        Proprietario roberto = new Proprietario(1,"Roberto", 11021093l, "SpI");
+        Proprietario larissa = new Proprietario("Larissa", 11021093l, "SpI");
+        Proprietario iria = new Proprietario(3, "Iria", 11021093l, "SpI");
+        Proprietario arthur = new Proprietario("Arthur", 11021093l, "SpI");
+
+        Veiculo fordka = new Veiculo(1,"QFI7289", roberto, "Ford Ka", "Preto", TipoVeiculo.CARRO);
+        Veiculo hb20 = new Veiculo(2, "7777", iria, "HB20", "Vermelho", TipoVeiculo.CARRO);
+        Veiculo ferrari = new Veiculo(3,"S0JU", iria, "Ferrari", "Vermelho", TipoVeiculo.CARRO);
+
+        AreaEstacionamento deficientes = new AreaEstacionamento(4,"Deficientes", 5,
+                TipoVeiculo.CARRO, true);
+        AreaEstacionamento vip = new AreaEstacionamento(5,"Vip", 2,
+                TipoVeiculo.CARRO, true);
+
+//        instance.open();
+//        instance.insertVehicle(fordka, deficientes);
+//        instance.insertVehicle(fordka, deficientes);
+//        instance.insertVehicle(hb20, vip);
+//        instance.insertVehicle(ferrari, vip);
+
+//        ArrayList<String> placas = instance.queryAllVehicles();
+//        ArrayList<String> placas = instance.queryVehiclesByArea(vip);
+//        for (String placa : placas) {
+//            System.out.println(placa);
+//        }
+
+//        instance.deleteVehicle("7777");
+
+
+//        instance.close();
+    }
+
     public static void main(String[] args) {
 //        testUsuarios();
 //        testAreas();
 //        testProprietarios();
 //        testVeiculos();
 //        testPermissoes();
-        testEventos();
+//        testEventos();
+//        testEstacionamento();
     }
 
 }

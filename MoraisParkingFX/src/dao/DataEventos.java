@@ -22,12 +22,14 @@ public class DataEventos {
     private PreparedStatement dropReservasTable;
     private PreparedStatement createReservasTable;
 
+    private PreparedStatement queryAllEventsStatement;
     private PreparedStatement queryEventByNameStatement;
     private PreparedStatement queryEventByIdStatement;
     private PreparedStatement insertEventStatement;
     private PreparedStatement deleteEventStatement;
 
     private PreparedStatement queryReservesStatement;
+    private PreparedStatement queryReservedSpotsStatement;
     private PreparedStatement insertReserveStatement;
     private PreparedStatement deleteReservesStatement;
 
@@ -69,12 +71,14 @@ public class DataEventos {
             createReservasTable.execute();
 
             insertEventStatement = conn.prepareStatement(Constants.INSERT_EVENTO);
+            queryAllEventsStatement = conn.prepareStatement(Constants.QUERY_ALL_EVENTOS);
             queryEventByNameStatement = conn.prepareStatement(Constants.QUERY_EVENTO_BY_NAME);
             queryEventByIdStatement = conn.prepareStatement(Constants.QUERY_EVENTO_BY_ID);
             deleteEventStatement = conn.prepareStatement(Constants.DELETE_EVENTO);
 
             insertReserveStatement = conn.prepareStatement(Constants.INSERT_RESERVA);
             queryReservesStatement = conn.prepareStatement(Constants.QUERY_RESERVAS);
+            queryReservedSpotsStatement = conn.prepareStatement(Constants.QUERY_RESERVA);
             deleteReservesStatement = conn.prepareStatement(Constants.DELETE_RESERVAS);
 
 
@@ -102,6 +106,9 @@ public class DataEventos {
                 createReservasTable.close();
             }
 
+            if (queryAllEventsStatement != null) {
+                queryAllEventsStatement.close();
+            }
             if (queryEventByNameStatement != null) {
                 queryEventByNameStatement.close();
             }
@@ -110,6 +117,9 @@ public class DataEventos {
             }
             if (queryReservesStatement != null) {
                 queryReservesStatement.close();
+            }
+            if (queryReservedSpotsStatement != null) {
+                queryReservedSpotsStatement.close();
             }
             if (insertEventStatement != null) {
                 insertEventStatement.close();
@@ -148,14 +158,14 @@ public class DataEventos {
 
     public boolean createEvent(String nome, LocalDate inicio, LocalDate fim,
                                HashMap<AreaEstacionamento, Integer> reservas) {
-        Evento queriedEvent = queryEventWithoutDatesByName(nome);
+        Evento queriedEvent = queryEventWithoutReservesByName(nome);
         if (queriedEvent != null) {
             return false;
         };
         if (!insertEvent(nome, inicio, fim)) {
             return false;
         };
-        queriedEvent = queryEventWithoutDatesByName(nome);
+        queriedEvent = queryEventWithoutReservesByName(nome);
         if (queriedEvent == null) {
             deleteEvent(nome);
             return false;
@@ -220,7 +230,28 @@ public class DataEventos {
     }
 
     // QUERY METHODS
-    public Evento queryEventWithoutDatesByName(String nome) {
+    public ArrayList<Evento> queryAllEventsWithoutReserves() {
+        try {
+            ResultSet results = queryAllEventsStatement.executeQuery();
+            ArrayList<Evento> eventos = new ArrayList<>();
+            while (results.next()) {
+                int currId = results.getInt(1);
+                String currNome = results.getString(2);
+                LocalDate currInicio = LocalDate.parse(results.getString(3));
+                LocalDate currFim = LocalDate.parse(results.getString(4));
+
+                Evento evento = new Evento(currId, currNome, currInicio, currFim);
+                eventos.add(evento);
+            }
+            return eventos;
+
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public Evento queryEventWithoutReservesByName(String nome) {
         try {
             queryEventByNameStatement.setString(1, nome);
             ResultSet results = queryEventByNameStatement.executeQuery();
@@ -242,7 +273,7 @@ public class DataEventos {
         }
     }
 
-    public Evento queryEventWithoutDatesById(int id) {
+    public Evento queryEventWithoutReservesById(int id) {
         try {
             queryEventByIdStatement.setInt(1, id);
             ResultSet results = queryEventByIdStatement.executeQuery();
@@ -277,6 +308,23 @@ public class DataEventos {
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
             return null;
+        }
+    }
+
+    public int queryReservedSpots(int eventId, int areaId) {
+        try {
+            queryReservedSpotsStatement.setInt(1, eventId);
+            queryReservedSpotsStatement.setInt(2, areaId);
+            ResultSet results = queryReservedSpotsStatement.executeQuery();
+            int reservedSpots = 0;
+            if (results.next()) {
+                reservedSpots = results.getInt(4);
+            }
+            return reservedSpots;
+
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return 0;
         }
     }
 

@@ -7,17 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import model.AreaEstacionamento;
 import model.Evento;
-import org.w3c.dom.Text;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -115,7 +111,7 @@ public class EventosController implements Initializable {
             return;
         }
         dataEventos.open();
-        Evento currEvento = dataEventos.queryEventWithoutDatesByName(nome);
+        Evento currEvento = dataEventos.queryEventWithoutReservesByName(nome);
         if (currEvento == null) {
             warningLabelDel.setTextFill(Color.RED);
             warningLabelDel.setText("Evento não encontrado");

@@ -43,7 +43,7 @@
             <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" spacing="40.0">
                <children>
                   <TextField fx:id="proprietarioNomeAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
-                  <Button fx:id="validacaoProprietarioBtnAdd" onAction="#validateOwnerAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Validar">
+                  <Button fx:id="validacaoProprietarioBtnAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#validateOwnerAdd" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Validar">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -71,9 +71,9 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="12.0" layoutY="172.0" spacing="40.0">
                <children>
-                  <ComboBox fx:id="placaComboBoxAdd" layoutX="368.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0" styleClass="content-field" />
+                  <ComboBox fx:id="placaComboBoxAdd" layoutX="368.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#plateSelectedAdd" prefHeight="30.0" prefWidth="160.0" styleClass="content-field" />
                   <ComboBox fx:id="areaComboBoxAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" styleClass="content-field" />
-                  <Button fx:id="btnAdd" onAction="#givePermission" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Adicionar">
+                  <Button fx:id="btnAdd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#givePermission" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Adicionar">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -128,7 +128,7 @@
             <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" spacing="40.0">
                <children>
                   <TextField fx:id="proprietarioNomeDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0" styleClass="content-field" />
-                  <Button fx:id="validacaoProprietarioBtnDel" onAction="#validateOwnerDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Validar">
+                  <Button fx:id="validacaoProprietarioBtnDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#validateOwnerDel" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Validar">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -156,9 +156,9 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="12.0" layoutY="172.0" spacing="40.0">
                <children>
-                  <ComboBox fx:id="placaComboBoxDel" layoutX="368.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0" styleClass="content-field" />
+                  <ComboBox fx:id="placaComboBoxDel" layoutX="368.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#plateSelectedDel" prefHeight="30.0" prefWidth="160.0" styleClass="content-field" />
                   <ComboBox fx:id="areaComboBoxDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" styleClass="content-field" />
-                  <Button fx:id="btnDel" onAction="#removePermission" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Remover">
+                  <Button fx:id="btnDel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removePermission" prefHeight="30.0" prefWidth="150.0" styleClass="content-btn" text="Remover">
                      <font>
                         <Font size="16.0" />
                      </font>

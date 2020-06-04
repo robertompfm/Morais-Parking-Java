@@ -48,7 +48,12 @@ public final class Constants {
             " WHERE _id = ?";
     public static final String QUERY_SPECIAL_AREAS_NAME = "SELECT nome FROM " + AREAS_TABLE +
             " WHERE especial = 1";
+    public static final String QUERY_COMPATIBLE_SPECIAL_AREAS_NAME = "SELECT nome FROM " + AREAS_TABLE +
+            " WHERE especial = 1 and tipo_veiculo = ?";
+    public static final String QUERY_COMMON_AREA_BY_TIPO = "SELECT * FROM " + AREAS_TABLE +
+            " WHERE especial = 0 and tipo_veiculo = ?";
     public static final String QUERY_ALL_AREAS_NAME = "SELECT nome FROM " + AREAS_TABLE;
+    public static final String QUERY_ALL_AREAS = "SELECT * FROM " + AREAS_TABLE;
     public static final String INSERT_AREA = "INSERT INTO " + AREAS_TABLE +
             " (nome, capacidade, tipo_veiculo, especial) VALUES (?, ?, ?, ?)";
     public static final String DELETE_AREA = "DELETE FROM " + AREAS_TABLE +
@@ -106,11 +111,11 @@ public final class Constants {
             PERMISSOES_TABLE;
     public static final String CREATE_PERMISSOES_TABLE = "CREATE TABLE IF NOT EXISTS " +
             PERMISSOES_TABLE +
-            " (_id INTEGER PRIMARY KEY, veiculo_id INTEGER NOT NULL, area_id INTEGER NOT NULL)";
+            " (_id INTEGER PRIMARY KEY, veiculo_id INTEGER NOT NULL UNIQUE, area_id INTEGER NOT NULL)";
 
     public static final  String QUERY_PERMISSAO = "SELECT * FROM " + PERMISSOES_TABLE +
             " WHERE " + "veiculo_id = ?" + " AND " + "area_id = ?";
-    public static final  String QUERY_PERMISSOES_BY_VEICULO_ID = "SELECT * FROM " + PERMISSOES_TABLE +
+    public static final  String QUERY_PERMISSAO_BY_VEICULO_ID = "SELECT * FROM " + PERMISSOES_TABLE +
             " WHERE " + "veiculo_id = ?";
     public static final String INSERT_PERMISSAO = "INSERT INTO " + PERMISSOES_TABLE +
             " (veiculo_id, area_id)" +
@@ -133,12 +138,16 @@ public final class Constants {
     public static final String DROP_RESERVAS_TABLE = "DROP TABLE IF EXISTS " +
             RESERVAS_TABLE;
 
+
+    public static final String QUERY_ALL_EVENTOS = "SELECT * FROM " + EVENTOS_TABLE;
     public static final String QUERY_EVENTO_BY_NAME = "SELECT * FROM " + EVENTOS_TABLE +
             " WHERE " + "nome = ?";
     public static final String QUERY_EVENTO_BY_ID = "SELECT * FROM " + EVENTOS_TABLE +
             " WHERE " + "_id = ?";
     public static final String QUERY_RESERVAS = "SELECT * FROM " + RESERVAS_TABLE +
             " WHERE " + "evento_id = ?";
+    public static final String QUERY_RESERVA = "SELECT * FROM " + RESERVAS_TABLE +
+            " WHERE " + "evento_id = ?" + " AND " + "area_id = ?";
 
     public static final String INSERT_EVENTO = "INSERT INTO " + EVENTOS_TABLE +
             " (nome, inicio, fim)" +
@@ -152,5 +161,27 @@ public final class Constants {
     public static final String DELETE_RESERVAS = "DELETE FROM " + RESERVAS_TABLE +
             " WHERE " + "evento_id = ?";
 
+    // ESTACIONAMENTO
+    public static final String DROP_ESTACIONAMENTO_TABLE = "DROP TABLE IF EXISTS " +
+            ESTACIONAMENTO_TABLE;
+    public static final String CREATE_ESTACIONAMENTO_TABLE = "CREATE TABLE IF NOT EXISTS " +
+            ESTACIONAMENTO_TABLE +
+            " (_id INTEGER PRIMARY KEY, veiculo_id INTEGER NOT NULL," +
+            " placa TEXT NOT NULL UNIQUE, area_id INTEGER NOT NULL)";
+
+    public static final  String QUERY_VEICULOS_IN_AREA = "SELECT * FROM " + ESTACIONAMENTO_TABLE +
+            " WHERE " + "area_id = ?";
+    public static final  String QUERY_ALL_VEICULOS_IN_ESTACIONAMENTO = "SELECT * FROM " +
+            ESTACIONAMENTO_TABLE;
+    public static final  String QUERY_VEICULO_IN_ESTACIONAMENTO = "SELECT * FROM " +
+            ESTACIONAMENTO_TABLE + " WHERE " + "placa = ?";;
+
+
+    public static final String INSERT_VEICULO_IN_ESTACIONAMENTO = "INSERT INTO " +
+            ESTACIONAMENTO_TABLE +
+            " (veiculo_id, placa, area_id)" +
+            " VALUES (?, ?, ?)";
+    public static final String DELETE_VEICULO_FROM_ESTACIONAMENTO = "DELETE FROM " + ESTACIONAMENTO_TABLE +
+            " WHERE " + "placa = ?";
 
 }
