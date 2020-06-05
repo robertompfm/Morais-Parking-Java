@@ -23,7 +23,7 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" spacing="40.0">
@@ -91,7 +91,7 @@
             </HBox>
          </children>
          <padding>
-            <Insets bottom="20.0" top="10.0" />
+            <Insets bottom="10.0" />
          </padding>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -108,7 +108,7 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" spacing="40.0">
@@ -176,7 +176,7 @@
             </HBox>
          </children>
          <padding>
-            <Insets bottom="20.0" top="10.0" />
+            <Insets bottom="10.0" />
          </padding>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

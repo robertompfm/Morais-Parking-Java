@@ -176,7 +176,7 @@ CONTENT
 }
 
 .reserve-area-row {
-    -fx-background-color: #ddd;
+    -fx-background-color: transparent;
 }
 
 .reserve-area-row-field {
@@ -185,4 +185,12 @@ CONTENT
 }
 .reserve-area-row-label {
     -fx-text-fill: #444;
+}
+
+/*
+PROGRESS BAR
+*/
+.progress-bar {
+    -fx-background-color: transparent;
+    -fx-accent: #365a0f;
 }

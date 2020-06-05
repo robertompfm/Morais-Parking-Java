@@ -28,9 +28,17 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                <children>
+                  <Label fx:id="nomeLabel" text="Nome">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
+                  </Label>
                   <MenuButton alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" styleClass="topmenu-btn">
                      <items>
-                        <MenuItem onAction="#logout" mnemonicParsing="false" styleClass="topmenu-btn-item" text="Logout" />
+                        <MenuItem mnemonicParsing="false" onAction="#logout" styleClass="topmenu-btn-item" text="Logout" />
                      </items>
                      <HBox.margin>
                         <Insets right="40.0" />

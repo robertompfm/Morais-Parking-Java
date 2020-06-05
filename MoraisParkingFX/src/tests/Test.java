@@ -230,6 +230,8 @@ public class Test {
 //        testPermissoes();
 //        testEventos();
 //        testEstacionamento();
+//
+//        System.out.println(TipoOcorrencia.getEnum("Batidas"));
     }
 
 }

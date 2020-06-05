@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -27,11 +28,15 @@ public class ContentAreaController implements Initializable {
     @FXML
     private Button openMenuBtn;
 
+    @FXML
+    private Label nomeLabel;
+
     private boolean opened = false;
+    private Usuario usuario = DataUsuarios.getInstance().getCurrentUser();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        nomeLabel.setText(usuario.getNome());
     }
 
     @FXML
