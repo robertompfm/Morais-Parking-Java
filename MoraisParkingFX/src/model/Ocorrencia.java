@@ -69,12 +69,12 @@ public class Ocorrencia {
     public String toString() {
         StringBuilder veiculosStrBld = new StringBuilder();
         for (Veiculo veiculo : veiculosEnvolvidos) {
-            veiculosStrBld.append("\n").append(veiculo.toString());
+            veiculosStrBld.append("\n\t").append(veiculo.getPlaca()).append(" - ").append(veiculo.getProprietario().getNome());
         }
-        return "Ocorrencia:\n" +
-                "Tipo: " + tipoOcorrencia +
-                "Data: " + data +
-                "Veiculos envolvidos:" + veiculosStrBld.toString() +
-                "Descricao: " + descricao;
+        return "Ocorrencia:" +
+                "\nTipo: " + tipoOcorrencia +
+                "\nData: " + data +
+                "\nVeiculos envolvidos:" + veiculosStrBld.toString() +
+                "\nDescricao: " + descricao;
     }
 }

@@ -140,6 +140,9 @@ public class AcessoController implements Initializable {
                 dataEstacionamento.close();
             }
         }
+
+        updateMaxOccupation();
+
         // SHOW FEEDBACK
         if (success) {
             warningLabelAdd.setTextFill(Color.GREEN);
@@ -175,11 +178,13 @@ public class AcessoController implements Initializable {
         success = dataEstacionamento.deleteVehicle(placa);
         dataEstacionamento.close();
 
+        updateMaxOccupation();
+
         // SHOW FEEDBACK
         if (success) {
             warningLabelDel.setTextFill(Color.GREEN);
             warningLabelDel.setText("Saída autorizada!");
-            clearFieldsAdd();
+            clearFieldsDel();
         } else {
             warningLabelDel.setTextFill(Color.RED);
             warningLabelDel.setText("Não foi possível autorizar a saída");
@@ -279,23 +284,29 @@ public class AcessoController implements Initializable {
         return 0;
     }
 
-    public HashMap<AreaEstacionamento, Integer> getOccupations() {
+    // UPDATE MAX OCCUPATION
+    public void updateMaxOccupation() {
         dataAreas.open();
         ArrayList<AreaEstacionamento> areas = dataAreas.queryAllAreas();
         dataAreas.close();
-        HashMap<AreaEstacionamento, Integer> ocupacoes = new HashMap<>();
         for (AreaEstacionamento area : areas) {
-            int ocupacao;
+            int ocupacaoMax = dataEstacionamento.getOcupacaoByArea(area);
+            int currOcupacao;
             dataEstacionamento.open();
-            ocupacao = dataEstacionamento.queryVehiclesByArea(area).size();
+            currOcupacao = dataEstacionamento.queryVehiclesByArea(area).size();
             dataEstacionamento.close();
             if (eventoDoDia != null) {
                 dataEventos.open();
-                ocupacao += dataEventos.queryReservedSpots(eventoDoDia.getId(), area.getId());
+                currOcupacao += dataEventos.queryReservedSpots(eventoDoDia.getId(), area.getId());
                 dataEventos.close();
             }
-            ocupacoes.put(area, ocupacao);
+            if (currOcupacao >= ocupacaoMax) {
+                dataEstacionamento.updateOccupationByArea(area, currOcupacao);
+            }
+
         }
-        return ocupacoes;
+
     }
+
+
 }

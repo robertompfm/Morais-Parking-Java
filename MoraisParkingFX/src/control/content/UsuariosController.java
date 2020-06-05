@@ -63,7 +63,7 @@ public class UsuariosController implements Initializable {
 
         confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setTitle("Confirmation dialog");
-        confirmationDialog.setHeaderText("Você realmente deseja remover o usuário?");
+        confirmationDialog.setHeaderText("Você realmente deseja remover o funcionário?");
     }
 
     // BUTTON ACTION METHODS
@@ -89,11 +89,11 @@ public class UsuariosController implements Initializable {
         dataUsuarios.open();
         if (dataUsuarios.insertUsuario(usuario)) {
             warningLabelAdd.setTextFill(Color.GREEN);
-            warningLabelAdd.setText("Usuário criado com sucesso!");
+            warningLabelAdd.setText("funcionário criado com sucesso!");
             clearCreateUserFields();
         } else {
             warningLabelAdd.setTextFill(Color.RED);
-            warningLabelAdd.setText("Não foi possível cadastrar o usuário");
+            warningLabelAdd.setText("Não foi possível cadastrar o funcionário");
         }
         dataUsuarios.close();
 
@@ -109,7 +109,7 @@ public class UsuariosController implements Initializable {
         Usuario usuario = dataUsuarios.queryUsuarioByEmail(email);
         if (usuario == null) {
             warningLabelDel.setTextFill(Color.RED);
-            warningLabelDel.setText("Não foi possível encontrar o usuário");
+            warningLabelDel.setText("Não foi possível encontrar o funcionário");
         } else if (dataUsuarios.getCurrentUser().getEmail().equals(usuario.getEmail())) {
             warningLabelDel.setTextFill(Color.RED);
             warningLabelDel.setText("Não é possível remover seu próprio cadastro");
@@ -122,15 +122,15 @@ public class UsuariosController implements Initializable {
             if (confirmationDialog.showAndWait().get() == ButtonType.OK) {
                 if (dataUsuarios.deleteUsuarioByEmail(email)) {
                     warningLabelDel.setTextFill(Color.GREEN);
-                    warningLabelDel.setText("Usuário removido com sucesso!");
+                    warningLabelDel.setText("funcionário removido com sucesso!");
                     clearCreateUserFields();
                 } else {
                     warningLabelDel.setTextFill(Color.RED);
-                    warningLabelDel.setText("Não foi possível remover o usuário");
+                    warningLabelDel.setText("Não foi possível remover o funcionário");
                 }
             } else {
                 warningLabelDel.setTextFill(Color.RED);
-                warningLabelDel.setText("Operação abortada. O usuário não foi removido");
+                warningLabelDel.setText("Operação abortada. O funcionário não foi removido");
             }
         }
         dataUsuarios.close();

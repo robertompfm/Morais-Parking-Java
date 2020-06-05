@@ -66,49 +66,6 @@ public class MonitoramentoController implements Initializable {
 
     }
 
-    // BUTTON ACTION METHODS
-//    @FXML
-//    public void addEvent(ActionEvent event) {
-//        String nome = nomeFieldAdd.getText();
-//        LocalDate inicio = inicioDate.getValue();
-//        LocalDate fim = fimDate.getValue();
-//        if (!validateNameAdd(nome)) {
-//            return;
-//        }
-//        if (!validateDates(inicio, fim)) {
-//            return;
-//        }
-//        HashMap<AreaEstacionamento, Integer> reservas = new HashMap<>();
-//        for (Node node : areasVBox.getChildren()) {
-//            HBox currHBox = (HBox) node;
-//            String areaStr = ((Label) currHBox.getChildren().get(0)).getText();
-//            dataAreas.open();
-//            AreaEstacionamento currArea = dataAreas.queryAreaByName(areaStr);
-//            dataAreas.close();
-//            String reservaStr = ((TextField) currHBox.getChildren().get(1)).getText();
-//            if (!validateReserva(currArea, reservaStr)) {
-//                return;
-//            }
-//            int currReserva = Integer.parseInt(reservaStr);
-//            reservas.put(currArea, currReserva);
-//        }
-//        Evento newEvent = new Evento(nome, inicio, fim);
-//        newEvent.setVagasReservadas(reservas);
-//        dataEventos.open();
-//        if (!dataEventos.createEvent(newEvent)) {
-//            warningLabelAdd.setTextFill(Color.RED);
-//            warningLabelAdd.setText("Não foi possível criar o evento. Talvez ja tenha sido cadastrado um evento com mesmo nome.");
-//        } else {
-//            System.out.println("OK");
-//            warningLabelAdd.setTextFill(Color.GREEN);
-//            warningLabelAdd.setText("Evento cadastrado com sucesso!");
-//            clearFieldsAdd();
-//        };
-//        dataEventos.close();
-//
-//    }
-
-
 
     // POPULATE SCREEN
     private void populateScreen() {

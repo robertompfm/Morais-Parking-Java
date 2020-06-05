@@ -4,8 +4,10 @@ import model.*;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DataEstacionamento implements DataClass {
+    // ATTRIBUTES
     private static Connection conn;
 
     private static DataEstacionamento instance = new DataEstacionamento();
@@ -19,12 +21,43 @@ public class DataEstacionamento implements DataClass {
     private PreparedStatement insertVehicleStatement;
     private PreparedStatement deleteVehicleStatement;
 
+    private HashMap<AreaEstacionamento, Integer> ocupacaoMaxima;
 
+    // CONSTRUCTOR
+    private DataEstacionamento() {
+        ocupacaoMaxima = new HashMap<>();
+    }
 
+    // GETTERS AND SETTERS
     public static DataEstacionamento getInstance() {
         return instance;
     }
 
+    public HashMap<AreaEstacionamento, Integer> getOcupacaoMaxima() {
+        return ocupacaoMaxima;
+    }
+
+    public void setOcupacaoMaxima(HashMap<AreaEstacionamento, Integer> ocupacaoMaxima) {
+        this.ocupacaoMaxima = ocupacaoMaxima;
+    }
+
+    public int getOcupacaoByArea(AreaEstacionamento area) {
+        if (ocupacaoMaxima.containsKey(area)) {
+            return ocupacaoMaxima.get(area);
+        }
+        return 0;
+    }
+
+    // UPDATE MAX OCCUPATION
+    public void updateOccupationByArea(AreaEstacionamento area, int ocupacao) {
+        if (ocupacaoMaxima.containsKey(area)) {
+            ocupacaoMaxima.replace(area, ocupacao);
+        } else {
+            ocupacaoMaxima.put(area, ocupacao);
+        }
+    }
+
+    // OTHER METHODS
     @Override
     public boolean open() {
         try {

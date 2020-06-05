@@ -67,6 +67,27 @@ public class AreaEstacionamento {
 		this.especial = especial;
 	}
 
+	// EQUALS
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof AreaEstacionamento)) {
+			return false;
+		}
+		AreaEstacionamento area = (AreaEstacionamento) obj;
+		return nome.equalsIgnoreCase(area.getNome());
+	}
+
+	@Override
+	public int hashCode() {
+		return this.nome.hashCode();
+	}
+
 	// TO STRING
 	@Override
 	public String toString() {
