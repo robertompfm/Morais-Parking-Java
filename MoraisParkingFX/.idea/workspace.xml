@@ -25,23 +25,99 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/control/content/VeiculoEnvolvidoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/DataOcorrencias.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/fxml/content/veiculo_envolvido.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/morais_parking.db" beforeDir="false" afterPath="$PROJECT_DIR$/morais_parking.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MoraisParkingFX/view/fxml/content/ocorrencias.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MoraisParkingFX/view/fxml/content/ocorrencias.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/content/AcessoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/content/AcessoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/content/MonitoramentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/content/MonitoramentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/content/OcorrenciasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/content/OcorrenciasController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/content/RelatoriosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/content/RelatoriosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/content/UsuariosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/content/UsuariosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/DataEstacionamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/DataEstacionamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/AreaEstacionamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AreaEstacionamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Ocorrencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Ocorrencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/fxml/content/ocorrencias.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/fxml/content/ocorrencias.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/fxml/content/relatorios.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/fxml/content/relatorios.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/fxml/content/usuarios.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/fxml/content/usuarios.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/MoraisParkingJava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/.netbeans_update_resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/imagens/calendario.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/imagens/car-crash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/imagens/estacionamento.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/imagens/gestor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/imagens/imagemFundo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/imagens/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/imagens/ocorrência.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/imagens/relatorios.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/model/Area.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/model/Estacionamento.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/model/Proprietario.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/model/Veiculo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaCadastroVeiculo$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaCadastroVeiculo$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaCadastroVeiculo$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaCadastroVeiculo$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaCadastroVeiculo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaCadastroVeiculo.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaIdentificacaoVeiculo$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaIdentificacaoVeiculo$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaIdentificacaoVeiculo$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaIdentificacaoVeiculo$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaIdentificacaoVeiculo$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaIdentificacaoVeiculo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaIdentificacaoVeiculo.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaMonitoramento$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaMonitoramento$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaMonitoramento$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaMonitoramento$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaMonitoramento$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaMonitoramento$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaMonitoramento.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaMonitoramento.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaPrincipal$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaPrincipal$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaPrincipal$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaPrincipal$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaPrincipal$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaPrincipal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/telas/TelaPrincipal.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/build/classes/view/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/manifest.mf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/morais_parking.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/nbproject/build-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/nbproject/genfiles.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/nbproject/private/private.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/nbproject/private/private.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/nbproject/project.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/out/production/MoraisParkingJava/META-INF/MoraisParkingJava.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/com/larissacsf/model/AreaEstacionamento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/com/larissacsf/model/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/com/larissacsf/model/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/com/larissacsf/model/DataSource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/com/larissacsf/model/Estacionamento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/com/larissacsf/model/Proprietario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/com/larissacsf/model/Veiculo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/com/larissacsf/test/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/com/larissacsf/view/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/imagens/calendario.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/imagens/car-crash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/imagens/estacionamento.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/imagens/gestor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/imagens/imagemFundo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/imagens/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/imagens/ocorrência.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/imagens/relatorios.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/model/Area.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/model/Estacionamento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/model/Proprietario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/model/Veiculo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/telas/TelaCadastroVeiculo.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/telas/TelaCadastroVeiculo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/telas/TelaIdentificacaoVeiculo.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/telas/TelaIdentificacaoVeiculo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/telas/TelaMonitoramento.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/telas/TelaMonitoramento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/telas/TelaPrincipal.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/telas/TelaPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoraisParkingJava/src/view/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -331,39 +407,39 @@
     <state x="481" y="201" key="FileChooserDialogImpl/67.27.1853.1053/248.1080.1366.768@67.27.1853.1053" timestamp="1589142770243" />
     <state x="588" y="1207" width="735" height="513" key="FileChooserDialogImpl/67.27.1853.1053/283.1080.1366.768@283.1080.1366.768" timestamp="1588172534069" />
     <state x="481" y="201" width="735" height="484" key="FileChooserDialogImpl/67.27.1853.1053/288.1080.1366.768@67.27.1853.1053" timestamp="1588954390803" />
-    <state width="1807" height="183" key="GridCell.Tab.0.bottom" timestamp="1591396188896">
+    <state width="1807" height="183" key="GridCell.Tab.0.bottom" timestamp="1591397150920">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1807" height="184" key="GridCell.Tab.0.bottom/67.27.1853.1053/248.1080.1366.768@67.27.1853.1053" timestamp="1589134582566" />
     <state width="1320" height="119" key="GridCell.Tab.0.bottom/67.27.1853.1053/265.1080.1366.768@265.1080.1366.768" timestamp="1591035640962" />
-    <state width="1807" height="183" key="GridCell.Tab.0.bottom/67.27.1853.1053/265.1080.1366.768@67.27.1853.1053" timestamp="1591396188896" />
+    <state width="1807" height="183" key="GridCell.Tab.0.bottom/67.27.1853.1053/265.1080.1366.768@67.27.1853.1053" timestamp="1591397150920" />
     <state width="1320" height="184" key="GridCell.Tab.0.bottom/67.27.1853.1053/283.1080.1366.768@283.1080.1366.768" timestamp="1588173379867" />
     <state width="1807" height="184" key="GridCell.Tab.0.bottom/67.27.1853.1053/283.1080.1366.768@67.27.1853.1053" timestamp="1588365759748" />
     <state width="1807" height="184" key="GridCell.Tab.0.bottom/67.27.1853.1053/288.1080.1366.768@67.27.1853.1053" timestamp="1588975995823" />
-    <state width="1807" height="183" key="GridCell.Tab.0.center" timestamp="1591396188896">
+    <state width="1807" height="183" key="GridCell.Tab.0.center" timestamp="1591397150920">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1807" height="184" key="GridCell.Tab.0.center/67.27.1853.1053/248.1080.1366.768@67.27.1853.1053" timestamp="1589134582565" />
     <state width="1320" height="119" key="GridCell.Tab.0.center/67.27.1853.1053/265.1080.1366.768@265.1080.1366.768" timestamp="1591035640962" />
-    <state width="1807" height="183" key="GridCell.Tab.0.center/67.27.1853.1053/265.1080.1366.768@67.27.1853.1053" timestamp="1591396188896" />
+    <state width="1807" height="183" key="GridCell.Tab.0.center/67.27.1853.1053/265.1080.1366.768@67.27.1853.1053" timestamp="1591397150920" />
     <state width="1320" height="184" key="GridCell.Tab.0.center/67.27.1853.1053/283.1080.1366.768@283.1080.1366.768" timestamp="1588173379866" />
     <state width="1807" height="184" key="GridCell.Tab.0.center/67.27.1853.1053/283.1080.1366.768@67.27.1853.1053" timestamp="1588365759748" />
     <state width="1807" height="184" key="GridCell.Tab.0.center/67.27.1853.1053/288.1080.1366.768@67.27.1853.1053" timestamp="1588975995823" />
-    <state width="1807" height="183" key="GridCell.Tab.0.left" timestamp="1591396188896">
+    <state width="1807" height="183" key="GridCell.Tab.0.left" timestamp="1591397150920">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1807" height="184" key="GridCell.Tab.0.left/67.27.1853.1053/248.1080.1366.768@67.27.1853.1053" timestamp="1589134582565" />
     <state width="1320" height="119" key="GridCell.Tab.0.left/67.27.1853.1053/265.1080.1366.768@265.1080.1366.768" timestamp="1591035640962" />
-    <state width="1807" height="183" key="GridCell.Tab.0.left/67.27.1853.1053/265.1080.1366.768@67.27.1853.1053" timestamp="1591396188896" />
+    <state width="1807" height="183" key="GridCell.Tab.0.left/67.27.1853.1053/265.1080.1366.768@67.27.1853.1053" timestamp="1591397150920" />
     <state width="1320" height="184" key="GridCell.Tab.0.left/67.27.1853.1053/283.1080.1366.768@283.1080.1366.768" timestamp="1588173379866" />
     <state width="1807" height="184" key="GridCell.Tab.0.left/67.27.1853.1053/283.1080.1366.768@67.27.1853.1053" timestamp="1588365759748" />
     <state width="1807" height="184" key="GridCell.Tab.0.left/67.27.1853.1053/288.1080.1366.768@67.27.1853.1053" timestamp="1588975995823" />
-    <state width="1807" height="183" key="GridCell.Tab.0.right" timestamp="1591396188896">
+    <state width="1807" height="183" key="GridCell.Tab.0.right" timestamp="1591397150920">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1807" height="184" key="GridCell.Tab.0.right/67.27.1853.1053/248.1080.1366.768@67.27.1853.1053" timestamp="1589134582565" />
     <state width="1320" height="119" key="GridCell.Tab.0.right/67.27.1853.1053/265.1080.1366.768@265.1080.1366.768" timestamp="1591035640962" />
-    <state width="1807" height="183" key="GridCell.Tab.0.right/67.27.1853.1053/265.1080.1366.768@67.27.1853.1053" timestamp="1591396188896" />
+    <state width="1807" height="183" key="GridCell.Tab.0.right/67.27.1853.1053/265.1080.1366.768@67.27.1853.1053" timestamp="1591397150920" />
     <state width="1320" height="184" key="GridCell.Tab.0.right/67.27.1853.1053/283.1080.1366.768@283.1080.1366.768" timestamp="1588173379866" />
     <state width="1807" height="184" key="GridCell.Tab.0.right/67.27.1853.1053/283.1080.1366.768@67.27.1853.1053" timestamp="1588365759748" />
     <state width="1807" height="184" key="GridCell.Tab.0.right/67.27.1853.1053/288.1080.1366.768@67.27.1853.1053" timestamp="1588975995823" />
